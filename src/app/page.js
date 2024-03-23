@@ -8,6 +8,7 @@ import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from 'react';
+import { Scene } from "./Scene";
 
 
 import CanModel from '../canModel/index.jsx';
@@ -15,27 +16,10 @@ import CanModel from '../canModel/index.jsx';
 export default function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
-      <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
-        <h2 className="text-white text-3xl">Section 1</h2>
-      </section>
-      <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
-      <motion.div
-            className="w-full h-full flex justify-center items-center bg-gray-800"
-          >
-            <Canvas className="w-full h-full">
-              <ambientLight intensity={0.1} />
-              <directionalLight color="red" position={[0, 0, 5]} />
-              <Suspense fallback={null}>
-                <CanModel />
-              </Suspense>
-              <Environment preset="sunset" background />
-            </Canvas>
-          </motion.div>
-      </section>
-      <section className="snap-start h-screen flex items-center justify-center bg-red-500">
-        <h2 className="text-white text-3xl">Section 3</h2>
-      </section>
-      {/* Add more sections as needed */}
+      <Canvas>
+        <Scene />
+      </Canvas>
+      
     </div>
   );
 }
