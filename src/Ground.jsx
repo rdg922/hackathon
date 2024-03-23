@@ -19,10 +19,7 @@ export function Ground() {
     "/textures/grid.png"
   );
 
-  const aoMap = useLoader(
-    TextureLoader,
-    "/textures/ground-ao.png"
-  );
+  
 
   const alphaMap = useLoader(
     TextureLoader,
@@ -72,7 +69,6 @@ export function Ground() {
       >
         <circleGeometry args={[6.12, 50]} />
         <MeshReflectorMaterial
-          aoMap={aoMap}
           alphaMap={alphaMap}
           transparent={true}
           color={[0.5, 0.5, 0.5]}

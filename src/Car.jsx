@@ -46,7 +46,7 @@ export function Car({ thirdPerson }) {
   useControls(vehicleApi, chassisApi);
 
   useFrame((state) => {
-    if(!thirdPerson) return;
+    
 
     let position = new Vector3(0,0,0);
     position.setFromMatrixPosition(chassisBody.current.matrixWorld);
@@ -55,10 +55,11 @@ export function Car({ thirdPerson }) {
     quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
 
     let wDir = new Vector3(0,0,1);
-    wDir.applyQuaternion(quaternion);
+    //wDir.applyQuaternion(quaternion);
     wDir.normalize();
 
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 0.3, 0)));
+    // change the numbers to move the camera position
+    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 5, -4)));
     
     wDir.add(new Vector3(0, 0.2, 0));
     state.camera.position.copy(cameraPosition);
