@@ -20,7 +20,7 @@ export default function Home() {
       </section>
       <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
       <motion.div
-            className="w-1/2 h-full flex justify-center items-center bg-gray-800"
+            className="w-full h-full flex justify-center items-center bg-gray-800"
             whileHover={{ scale: 1.05 }}
           >
             <Canvas className="w-full h-full">
@@ -29,18 +29,9 @@ export default function Home() {
               <Suspense fallback={null}>
                 <CanModel />
               </Suspense>
-              <OrbitControls />
               <Environment preset="sunset" background />
             </Canvas>
           </motion.div>
-          <div className="w-1/2 flex justify-center items-center bg-green-500">
-            <motion.div
-              className="text-white text-3xl"
-              // Add motion props for tilting if desired
-            >
-              Your Text Here
-            </motion.div>
-          </div>
       </section>
       <section className="snap-start h-screen flex items-center justify-center bg-red-500">
         <h2 className="text-white text-3xl">Section 3</h2>
