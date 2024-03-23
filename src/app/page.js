@@ -14,14 +14,13 @@ import CanModel from '../canModel/index.jsx';
 
 export default function Home() {
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-scroll">
+    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
       <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
         <h2 className="text-white text-3xl">Section 1</h2>
       </section>
       <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
       <motion.div
             className="w-full h-full flex justify-center items-center bg-gray-800"
-            whileHover={{ scale: 1.05 }}
           >
             <Canvas className="w-full h-full">
               <ambientLight intensity={0.1} />
