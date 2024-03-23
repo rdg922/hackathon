@@ -12,6 +12,7 @@ import { Scene } from "./Scene";
 
 
 import CanModel from '../canModel/index.jsx';
+import CarModel from '../carModel/index.jsx';
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
       <Canvas className="w-full h-full">
           <ambientLight intensity={0.1} />
           <Suspense fallback={null}>
-            <CanModel />
+            <CarModel />
           </Suspense>
           <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={40}/>
           <OrbitControls target = {[0,0,0]} />
