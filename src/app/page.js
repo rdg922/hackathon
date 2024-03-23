@@ -9,7 +9,6 @@ import { motion } from 'framer-motion';
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from 'react';
 
-
 import CanModel from '../canModel/index.jsx';
 
 export default function Home() {
@@ -20,17 +19,19 @@ export default function Home() {
       </section>
       <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
       <motion.div
-            className="w-full h-full flex justify-center items-center bg-gray-800"
+            className="w-1/2 flex h-full justify-center items-center bg-gray-800"
           >
             <Canvas className="w-full h-full">
               <ambientLight intensity={0.1} />
-              <directionalLight color="red" position={[0, 0, 5]} />
               <Suspense fallback={null}>
                 <CanModel />
               </Suspense>
-              <Environment preset="sunset" background />
+              <Environment preset="sunset" />
             </Canvas>
           </motion.div>
+      <div className="w-1/2 h-full flex justify-center items-center bg-gray-800">
+
+      </div>
       </section>
       <section className="snap-start h-screen flex items-center justify-center bg-red-500">
         <h2 className="text-white text-3xl">Section 3</h2>

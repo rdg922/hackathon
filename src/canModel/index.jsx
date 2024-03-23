@@ -1,30 +1,66 @@
-
 'use client'
-// components/CanModel.js
-import { Canvas } from '@react-three/fiber';
-import { Suspense, useRef } from 'react';
+import { useRef, useEffect } from 'react';
+import { useLoader, useThree, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { useLoader, useFrame } from '@react-three/fiber';
+import { Box3, Vector3 } from 'three';
 
-export default function CanModel(){
+function clamp(val, min, max) {
+    if (val < min) return min;
+    if (val > max) return max;
+    return val;
+}
 
+export default function CanModel() {
+  const scale = 1.3; // Your scale factor
   const gltf = useLoader(GLTFLoader, '/model/Luzzi_Can.glb');
-  const mesh = useRef(null)
-    console.log(gltf)
-    // Use frame loop to update the model's rotation based on mouse position
-    useFrame((state) => {
-    console.log(mesh)
-        // const { mouseX, mouseY } = state.pointer;
-        // const xRotation = mouseY * 0.5; // Adjust rotation sensitivity here
-        // const yRotation = mouseX * 0.5; // Adjust rotation sensitivity here
-        // mesh.current.rotation.x = xRotation;
-        // mesh.current.rotation.y = yRotation;
-      });
-    
-      return (
-        <mesh ref={mesh}>
-        <primitive  object={gltf.scene} scale={1.0} />
-      </mesh>
-      );
+  const mesh = useRef(null);
+  const { camera, size, mouse } = useThree();
 
-};
+  useEffect(() => {
+    const setPosition = () => {
+      if (!mesh.current) return; // Ensure mesh is loaded
+
+      // Calculate mesh height considering scale
+      const bbox = new Box3().setFromObject(mesh.current);
+      bbox.applyMatrix4(mesh.current.matrixWorld); // Adjust bbox based on mesh's world matrix
+      const height = (bbox.max.y - bbox.min.y) * scale; // Apply scale to height calculation
+
+      // Camera and viewport calculations
+      const aspectRatio = size.width / size.height;
+      const verticalFov = camera.fov * (Math.PI / 180); // Convert vertical FOV to radians
+      const visibleHeightAtDistance = 2 * Math.tan(verticalFov / 2) * camera.position.z;
+      const visibleWidthAtDistance = visibleHeightAtDistance * aspectRatio;
+
+      // Calculate new positions
+      const newYPosition = (visibleHeightAtDistance / 2) - (height / 2);
+      const newXPosition = -(visibleWidthAtDistance / 4); // Adjust this as needed
+
+      // Apply positions
+    //   mesh.current.position.y = newYPosition + 1;
+    //   mesh.current.position.x = newXPosition;
+    };
+
+    setPosition();
+    window.addEventListener('resize', setPosition);
+
+    return () => {
+      window.removeEventListener('resize', setPosition);
+    };
+  }, [camera, size.width, size.height, scale]); // React to changes in size, camera, or scale
+
+  useFrame(() => {
+    if (!mesh.current) return;
+
+    const xTilt = clamp(-(mouse.y * Math.PI) / 2, -Math.PI/10, Math.PI/10); // Controls the tilt based on mouse Y position
+    const yTilt = clamp((mouse.x * Math.PI) / 2, -Math.PI/10, Math.PI/10) + 6.7 / 4 *Math.PI;  // Controls the tilt based on mouse X position
+
+    mesh.current.rotation.x = (xTilt + mesh.current.rotation.x ) / 2;
+    mesh.current.rotation.y = (yTilt + mesh.current.rotation.y) / 2;
+  });
+
+  return (
+    <mesh ref={mesh} scale={[scale, scale, scale]} rotation-y={(6.8 / 4) * Math.PI}>
+      <primitive object={gltf.scene} />
+    </mesh>
+  );
+}
