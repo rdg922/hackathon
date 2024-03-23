@@ -2,11 +2,14 @@
 // import Image from "next/image";
 import { useState } from "react";
 import TiltContainer from "@/components/tiltContainer";
-import styles from "./page.modules.css";
 import Cube from "@/components/cube";
 import Section from "../section.jsx";
 import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
+import { Environment, OrbitControls } from "@react-three/drei";
+import { Suspense } from 'react';
+
+
 import CanModel from '../canModel/index.jsx';
 
 export default function Home() {
@@ -15,15 +18,29 @@ export default function Home() {
       <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
         <h2 className="text-white text-3xl">Section 1</h2>
       </section>
-      <section className="snap-start h-screen flex items-center justify-center bg-green-500">
-        <motion.div
-          className="w-full max-w-4xl h-2/3 bg-gray-800 rounded-lg shadow-lg overflow-hidden"
-          whileHover={{ scale: 1.05 }}
-        >
-          <Canvas camera={{position: [0, 0, 5], fov: 75}}>
-            <CanModel />
-          </Canvas>
-        </motion.div>
+      <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
+      <motion.div
+            className="w-1/2 h-full flex justify-center items-center bg-gray-800"
+            whileHover={{ scale: 1.05 }}
+          >
+            <Canvas className="w-full h-full">
+              <ambientLight intensity={0.1} />
+              <directionalLight color="red" position={[0, 0, 5]} />
+              <Suspense fallback={null}>
+                <CanModel />
+              </Suspense>
+              <OrbitControls />
+              <Environment preset="sunset" background />
+            </Canvas>
+          </motion.div>
+          <div className="w-1/2 flex justify-center items-center bg-green-500">
+            <motion.div
+              className="text-white text-3xl"
+              // Add motion props for tilting if desired
+            >
+              Your Text Here
+            </motion.div>
+          </div>
       </section>
       <section className="snap-start h-screen flex items-center justify-center bg-red-500">
         <h2 className="text-white text-3xl">Section 3</h2>
