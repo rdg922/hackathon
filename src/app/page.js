@@ -6,7 +6,7 @@ import Cube from "@/components/cube";
 import Section from "../section.jsx";
 import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Suspense } from 'react';
 import { Scene } from "./Scene";
 
@@ -16,9 +16,15 @@ import CanModel from '../canModel/index.jsx';
 export default function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
-      <Canvas>
-        <Scene />
-      </Canvas>
+      <Canvas className="w-full h-full">
+          <ambientLight intensity={0.1} />
+          <Suspense fallback={null}>
+            <CanModel />
+          </Suspense>
+          <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={40}/>
+          <OrbitControls target = {[0,0,0]} />
+          <Environment preset="sunset" background />
+       </Canvas>
       
     </div>
   );
