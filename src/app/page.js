@@ -1,19 +1,37 @@
-'use client'
+"use client";
 // import Image from "next/image";
+import { useState } from "react";
 import TiltContainer from "@/components/tiltContainer";
 import styles from "./page.modules.css";
 import Cube from "@/components/cube";
+import Section from "../section.jsx";
+import { Canvas } from '@react-three/fiber';
+import { motion } from 'framer-motion';
+import CanModel from '../canModel/index.jsx';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <TiltContainer>
-        <Cube />
-      </TiltContainer>
-    </main>
-  )
+    <div className="snap-y snap-mandatory h-screen overflow-scroll">
+      <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
+        <h2 className="text-white text-3xl">Section 1</h2>
+      </section>
+      <section className="snap-start h-screen flex items-center justify-center bg-green-500">
+        <motion.div
+          className="w-full max-w-4xl h-2/3 bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+          whileHover={{ scale: 1.05 }}
+        >
+          <Canvas camera={{position: [0, 0, 5], fov: 75}}>
+            <CanModel />
+          </Canvas>
+        </motion.div>
+      </section>
+      <section className="snap-start h-screen flex items-center justify-center bg-red-500">
+        <h2 className="text-white text-3xl">Section 3</h2>
+      </section>
+      {/* Add more sections as needed */}
+    </div>
+  );
 }
-
 
 // export default function Home() {
 //   return (
