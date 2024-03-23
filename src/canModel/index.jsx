@@ -51,11 +51,11 @@ export default function CanModel() {
   useFrame(() => {
     if (!mesh.current) return;
 
-    const xTilt = clamp(-(mouse.y * Math.PI) / 2, -Math.PI/10, Math.PI/10); // Controls the tilt based on mouse Y position
-    const yTilt = clamp((mouse.x * Math.PI) / 2, -Math.PI/10, Math.PI/10) + 6.7 / 4 *Math.PI;  // Controls the tilt based on mouse X position
+    const xTilt = clamp(-(mouse.y * Math.PI) / 2, -Math.PI/30, Math.PI/30); // Controls the tilt based on mouse Y position
+    const yTilt = clamp((mouse.x * Math.PI) / 2, -Math.PI/20, Math.PI/20) + 6.5 / 4 *Math.PI;  // Controls the tilt based on mouse X position
 
-    mesh.current.rotation.x = (xTilt + mesh.current.rotation.x ) / 2;
-    mesh.current.rotation.y = (yTilt + mesh.current.rotation.y) / 2;
+    mesh.current.rotation.x += (xTilt - mesh.current.rotation.x ) / 20 ;
+    mesh.current.rotation.y += (yTilt - mesh.current.rotation.y) / 20;
   });
 
   return (

@@ -8,6 +8,9 @@ import { Canvas } from '@react-three/fiber';
 import { motion } from 'framer-motion';
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from 'react';
+import { createRoot } from "react-dom/client";
+import { Scene } from "../Scene";
+import { Physics } from "@react-three/cannon";
 
 import CanModel from '../canModel/index.jsx';
 
@@ -34,7 +37,18 @@ export default function Home() {
       </div>
       </section>
       <section className="snap-start h-screen flex items-center justify-center bg-red-500">
-        <h2 className="text-white text-3xl">Section 3</h2>
+      <motion.div
+            className="w-full flex h-full justify-center items-center bg-gray-800"
+          >
+            <Canvas className="w-full h-full">
+<Physics
+        broadphase="SAP"
+        gravity={[0, -2.6, 0]}
+      >
+        <Scene />
+      </Physics>
+            </Canvas>
+          </motion.div>
       </section>
       {/* Add more sections as needed */}
     </div>
