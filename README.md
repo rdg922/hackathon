@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Dino Luzzi Energy Website Redesign
 
-First, run the development server:
+This project is a submission for the Dino Luzzi Energy Challenge as part of the OSCHack's 24-hour hackathon. The challenge was to infuse the [Dino Luzzi Energy](https://dinoluzzi.com/) website with fresh functionality, UI/UX design, and style in just 24 hours. The goal was to improve the company's functionality and make it easier for people to purchase the product.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **3D Car Model**: To represent the Dino Luzzi Racing team, we've included a 3D car model in the website. This adds an interactive element to the site and pays homage to the company's racing roots.
+- **Improved UI/UX**: We've redesigned the website to improve the user experience and make it easier for customers to navigate and purchase products.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Setup Instructions
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Run `npm install` to install all the dependencies listed in the [`package.json`](command:_github.copilot.openRelativePath?%5B%22package.json%22%5D "package.json") file.
+4. Run `npm run dev` to start the development server.
 
-## Learn More
+## Dependencies
 
-To learn more about Next.js, take a look at the following resources:
+This project uses several dependencies, including:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js: A React framework for building server-side rendered applications.
+- Three.js: A library for creating and displaying animated 3D computer graphics in a web browser.
+- react-three-fiber: A React renderer for Three.js.
+- Tailwind CSS: A utility-first CSS framework for rapidly building custom user interfaces.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+To use this project, navigate to the project directory and start the development server by running `npm run dev`. Open your web browser and navigate to `http://localhost:3000` to view the project.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Acknowledgements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We would like to thank OSCHack for organizing the hackathon and Dino Luzzi Energy for providing the challenge. We hope our redesign meets the challenge's goals and provides an improved user experience for Dino Luzzi Energy's customers.
