@@ -210,7 +210,7 @@ export default function Home() {
           </div>
           <div className="motion-div hover:scale-110 hover:rotate-0 tap:scale-80 tap:rounded-full bg-white rounded-full w-fit">
             <a
-              href="https://www.amazon.com"
+              href="https://www.amazon.com/dp/B09K7Y5DG7/ref=cm_sw_r_wa_api_glt_fabc_2XYCJFQW66HZ6QFF07QD"
               target="_blank"
               rel="noopener noreferrer"
             >
