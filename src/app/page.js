@@ -1,22 +1,29 @@
 "use client";
-// import Image from "next/image";
-import { useState } from "react";
-import TiltContainer from "@/components/tiltContainer";
-import Cube from "@/components/cube";
-import Section from "../section.jsx";
-import { Canvas } from '@react-three/fiber';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import { motion } from "framer-motion";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { Suspense } from 'react';
-import { createRoot } from "react-dom/client";
+import { Suspense } from "react";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
 import { Zap } from 'react-feather';
 
 
-import CanModel from '../canModel/index.jsx';
+import Link from "next/link";
+
+import CanModel from "../canModel/index.jsx";
+
+import HeroSection from "@/sections/heroSection";
+import CanSection from "@/sections/canSection";
+import CarSection from "@/sections/carSection";
+
+const sections = [HeroSection, CanSection, CarSection];
+
+
+
 
 export default function Home() {
+
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar" >
       <section className="snap-start h-screen flex items-center justify-center bg-blue-500">

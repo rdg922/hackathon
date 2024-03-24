@@ -10,7 +10,7 @@ function clamp(val, min, max) {
     return val;
 }
 
-export default function CanModel() {
+export default function CanModel({ onModelLoaded }) {
   const scale = 1.3; // Your scale factor
   const gltf = useLoader(GLTFLoader, '/model/Luzzi_Can.glb');
   const mesh = useRef(null);
