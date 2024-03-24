@@ -10,7 +10,7 @@ import { Track } from "./Track";
 import { TextPlane } from "./TextPlane";
 import { useThree } from "@react-three/fiber";
 
-export function Scene({ goToNextSection, resetSignal, isVisible }) {
+export default function Scene({ goToNextSection, resetSignal, isVisible }) {
   const [thirdPerson, setThirdPerson] = useState(false);
   const [cameraPosition, setCameraPosition] = useState([-6, 3.9, 6.21]);
 

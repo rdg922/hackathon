@@ -12,22 +12,23 @@ function getIconSize(width) {
   }
   if (width >= 1024) {
 
-    return 128; // 'lg' and up
+    return 100; // 'lg' and up
   }
   return 24; // Default size
 }
 
 const ResponsiveIcon = ({Icon}) => {
-  const [iconSize, setIconSize] = useState(getIconSize(window.innerWidth));
+//   const [iconSize, setIconSize] = useState(getIconSize(window.innerWidth));
+    const [iconSize, setIconSize] = useState(100);
 
-  useEffect(() => {
-    function handleResize() {
-      setIconSize(getIconSize(window.innerWidth));
-    }
+//   useEffect(() => {
+//     function handleResize() {
+//       setIconSize(getIconSize(window.innerWidth));
+//     }
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+//     window.addEventListener('resize', handleResize);
+//     return () => window.removeEventListener('resize', handleResize);
+//   }, []);
 
   return <Icon size={iconSize}  color="#A48BFF" strokeWidth={1.5}/>;
 };

@@ -1,6 +1,6 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, lazy } from "react";
 import { Quaternion, Vector3 } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useControls } from "./useControls";
@@ -12,7 +12,7 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(GLTFLoader, "./model/car_new.glb").scene;
 
-  const position = [-1.64, 0.1, 3.6];
+  const position = [-1.64, 0.1, 3.5];
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
@@ -62,7 +62,7 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
     state.camera.position.copy(cameraPosition);
     state.camera.lookAt(position);
 
-    if (position.z > 3.6) {
+    if (position.z > 3.5) {
       goToNextSection();
     }
   });

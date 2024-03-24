@@ -2,8 +2,6 @@ import { useLoader } from "@react-three/fiber";
 import { useEffect } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import { ColliderBox } from "./ColliderBox";
-import { Ramp } from "./Ramp";
 
 export function Track() {
   const result = useLoader(
@@ -31,7 +29,6 @@ export function Track() {
         />
       </mesh>
 
-      <Ramp />
       {/*
       <ColliderBox position={[1.75, 0, 0.5]} scale={[0.3, 1, 0.3]}/>
       <ColliderBox position={[2.5, 0, -1.4]} scale={[0.3, 1, 0.3]}/>
