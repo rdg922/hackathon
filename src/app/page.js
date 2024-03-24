@@ -6,8 +6,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
-import { Zap } from 'react-feather';
-
+import { Zap } from "react-feather";
 
 import Link from "next/link";
 
@@ -19,68 +18,77 @@ import CarSection from "@/sections/carSection";
 
 const sections = [HeroSection, CanSection, CarSection];
 
-
-
-
 export default function Home() {
-
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar" >
+    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
       <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
         <h2 className="text-white text-3xl">Section 1</h2>
       </section>
       <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
-      <motion.div
-            className="w-1/2 flex h-full justify-center items-center bg-gray-900"
-          >
-            <Canvas className="w-full h-full">
-              <ambientLight intensity={0.1} />
-              <Suspense fallback={null}>
-                <CanModel />
-              </Suspense>
-              <Environment preset="sunset" />
-            </Canvas>
-          </motion.div>
-      <div className="w-1/2 h-full justify-center  items-left bg-gray-900 px-2 flex gap-5 " style={{ flexDirection: 'column',}}>
-          <h2 className="text-white font-bold text-5xl">Dino Luzzi Energy Drink</h2>
-          <h3 className="text-white text-3xl">The best energy drink in the world</h3>
-          <div style={{gap: 20, flexDirection: 'row', display: "flex"}}>
-            <div style={{display: "flex", flexDirection: "column", gap: 15,}}>
+        <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
+          <Canvas className="w-full h-full">
+            <ambientLight intensity={0.1} />
+            <Suspense fallback={null}>
+              <CanModel />
+            </Suspense>
+            <Environment preset="sunset" />
+          </Canvas>
+        </motion.div>
+        <div
+          className="w-1/2 h-full justify-center  items-left bg-gray-900 px-2 flex gap-5 "
+          style={{ flexDirection: "column" }}
+        >
+          <h2 className="text-white font-bold text-5xl">
+            Dino Luzzi Energy Drink
+          </h2>
+          <h3 className="text-white text-3xl">
+            The best energy drink in the world
+          </h3>
+          <div style={{ gap: 20, flexDirection: "row", display: "flex" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 0 }}
-                
-                style={{borderRadius: 20, padding: 9}}
-                className= "bg-gray-700"
+                style={{ borderRadius: 20, padding: 9 }}
+                className="bg-gray-700"
               >
-                <Zap color="#A48BFF" size={70} strokeWidth={1}/>
+                <Zap color="#A48BFF" size={70} strokeWidth={1} />
               </motion.div>
-              <div classname="items-center flex justify-center" style={ {maxWidth: 85,}}>
+              <div
+                classname="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
                 <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
               </div>
             </div>
-            <div style={{display: "flex", flexDirection: "column", gap: 15,}}>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 0 }}
-                
-                style={{borderRadius: 20, padding: 9}}
-                className= "bg-gray-700"
+                style={{ borderRadius: 20, padding: 9 }}
+                className="bg-gray-700"
               >
-                <Zap color="#A48BFF" size={70} strokeWidth={1}/>
+                <Zap color="#A48BFF" size={70} strokeWidth={1} />
               </motion.div>
-              <div classname="items-center flex justify-center" style={ {maxWidth: 85,}}>
+              <div
+                classname="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
                 <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
               </div>
             </div>
-            <div style={{display: "flex", flexDirection: "column", gap: 15,}}>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 0 }}
-                
-                style={{borderRadius: 20, padding: 9}}
-                className= "bg-gray-700"
+                style={{ borderRadius: 20, padding: 9 }}
+                className="bg-gray-700"
               >
-                <Zap color="#A48BFF" size={70} strokeWidth={1}/>
+                <Zap color="#A48BFF" size={70} strokeWidth={1} />
               </motion.div>
-              <div classname="items-center flex justify-center" style={ {maxWidth: 85,}}>
+              <div
+                classname="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
                 <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
               </div>
             </div>
@@ -89,42 +97,39 @@ export default function Home() {
             whileHover={{ scale: 1.2, rotate: 0 }}
             whileTap={{
               scale: 0.8,
-              borderRadius: "100%"
+              borderRadius: "100%",
             }}
-            style={{background: "white", borderRadius: 30, width: "fit-content"}}
-          
+            style={{
+              background: "white",
+              borderRadius: 30,
+              width: "fit-content",
+            }}
           >
-            <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
-            <div className="rounded-full bg-white p-4 cursor-pointer px-25"> 
-              <p className="text-black font-bold">Buy Now!</p>
-            </div>
-          </a>
+            <a
+              href="https://www.amazon.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="rounded-full bg-white p-4 cursor-pointer px-25">
+                <p className="text-black font-bold">Buy Now!</p>
+              </div>
+            </a>
           </motion.div>
-          
-      </div>
+        </div>
       </section>
       <section className="snap-start h-screen flex items-center justify-center bg-red-500">
-      <motion.div
-            className="w-full flex h-full justify-center items-center bg-gray-800"
-          >
-            <Canvas className="w-full h-full">
-<Physics
-        broadphase="SAP"
-        gravity={[0, -2.6, 0]}
-      >
-        <Scene />
-      </Physics>
-            </Canvas>
-          </motion.div>
+        <motion.div className="w-full flex h-full justify-center items-center bg-gray-800">
+          <Canvas className="w-full h-full">
+            <Physics broadphase="SAP" gravity={[0, -2.6, 0]}>
+              <Scene />
+            </Physics>
+          </Canvas>
+        </motion.div>
       </section>
       {/* Add more sections as needed */}
     </div>
   );
 }
-
-
-
-
 
 // export default function Home() {
 //   return (

@@ -16,7 +16,7 @@ export function Ground() {
 
   const gridMap = useLoader(
     TextureLoader,
-    "/textures/grid_test.png"
+    "/textures/combined_scroller.png"
   );
 
   
@@ -49,15 +49,16 @@ export function Ground() {
     <>
       <mesh
         ref={meshRef2}
-        position={[-2.285, -0.01, -1.325]}
-        rotation-x={-Math.PI * 0.5}
+        position={[-1.5, -0.01, -1.325]}
+        rotation-x={-Math.PI * .5}
+        rotation-z={Math.PI * 1}
+        scale={[.5,1,.5]}
       >
         <planeGeometry args={[12, 12]} />
         <meshBasicMaterial
-          opacity={0.325}
-          alphaMap={gridMap}
-          transparent={true}
-          color={"white"}
+          
+          map={gridMap}
+          
         />
       </mesh>
 
@@ -66,15 +67,16 @@ export function Ground() {
         position={[-2.285, -0.015, -1.325]}
         rotation-x={-Math.PI * 0.5}
         rotation-z={-0.079}
+        
       >
         <circleGeometry args={[6.12, 50]} />
         <MeshReflectorMaterial
           alphaMap={alphaMap}
           transparent={true}
           color={[0.5, 0.5, 0.5]}
-          envMapIntensity={0.35}
+          envMapIntensity={0.3}
           metalness={0.05}
-          roughness={0.4}
+          roughness={.9}
 
           dithering={true}
           blur={[1024, 512]} // Blur ground reflections (width, heigt), 0 skips blur
