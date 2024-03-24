@@ -12,7 +12,7 @@ export function Car({ thirdPerson }) {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
-    "./model/car.glb"
+    "./model/car_new.glb"
   ).scene;
 
   const position = [-1.5, 0.5, 3];
