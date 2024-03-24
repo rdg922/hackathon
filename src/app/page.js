@@ -14,7 +14,7 @@ import CanModel from "../canModel/index.jsx";
 
 
 
-const CanvasComponent = ({ setToJump, toJump }) => {
+const CanvasComponent = ({ setToJump, toJump, isVisible }) => {
   const canvasRef = useRef();
 
   // Lock scroll function
@@ -60,6 +60,7 @@ const CanvasComponent = ({ setToJump, toJump }) => {
           goToNextSection={() => {
             if (!toJump) setToJump(true);
           }}
+          isVisible={isVisible}
         />
       </Physics>
     </Canvas>

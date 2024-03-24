@@ -7,7 +7,7 @@ import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
 
-export function Car({ thirdPerson, goToNextSection, resetSignal }) {
+export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
   // thanks to the_86_guy!
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
@@ -43,7 +43,7 @@ export function Car({ thirdPerson, goToNextSection, resetSignal }) {
     useRef(null),
   );
 
-  useControls(vehicleApi, chassisApi, resetSignal, chassisBody);
+  useControls(vehicleApi, chassisApi, resetSignal, isVisible);
 
   useFrame((state) => {
     

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useControls = (vehicleApi, chassisApi, resetSignal, chassisBody) => {
+export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
   let [controls, setControls] = useState({ });
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, chassisBody) =>
   }, []);
 
   useEffect(() => {
-    if(!vehicleApi || !chassisApi) return;
+    if(!vehicleApi || !chassisApi || !isVisible) return;
 
     if (controls.forward || controls.w) {
       vehicleApi.applyEngineForce(400, 2);
