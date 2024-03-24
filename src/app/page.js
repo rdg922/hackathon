@@ -192,16 +192,16 @@ export default function Home() {
               </div>
 
               <div className="flex items-center justify-center z-20">
-                <h3 className="text-slate-300 text-md z-20">Long lasting energy</h3>
+                <h3 className="text-slate-300 text-lg z-20 max-w-[128px]">Long lasting energy</h3>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 z-20">
-              <div className="motion-div bg-gray-700 rounded-2xl p-4">
+              <div className="motion-div bg-gray-700 rounded-2xl p-4 ">
                 <ResponsiveIcon Icon={Hexagon} />
               </div>
               <div className="flex items-center justify-center ">
-                <h3 className="text-slate-300 text-sm">
+                <h3 className="text-slate-300 text-lg  max-w-[128px]">
                   Contains vitamins B2, B12, B13
                 </h3>
               </div>
@@ -212,7 +212,7 @@ export default function Home() {
                 <ResponsiveIcon Icon={Slash} />
               </div>
               <div className="flex items-center justify-center">
-                <h3 className="text-slate-300 text-sm">
+                <h3 className="text-slate-300 text-lg  max-w-[128px]">
                   Made with zero fat or cholesterol
                 </h3>
               </div>
@@ -223,7 +223,7 @@ export default function Home() {
                 <ResponsiveIcon Icon={ArrowDownCircle} />
               </div>
               <div className="flex items-center justify-center ">
-                <h3 className="text-slate-300 text-sm">
+                <h3 className="text-slate-300 text-lg  max-w-[128px]">
                   Only 115 calories per can
                 </h3>
               </div>

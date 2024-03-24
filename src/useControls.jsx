@@ -43,8 +43,8 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
     if (!vehicleApi || !chassisApi || !isVisible) return;
 
     if (controls.forward || controls.w) {
-      vehicleApi.applyEngineForce(400, 2);
-      vehicleApi.applyEngineForce(400, 3);
+      vehicleApi.applyEngineForce(50, 2);
+      vehicleApi.applyEngineForce(50, 3);
       // vehicleApi.setBrake(0, 2);
       // vehicleApi.setBrake(0, 3);
     } else if (controls.backward || controls.s) {
