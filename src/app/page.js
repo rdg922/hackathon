@@ -9,10 +9,7 @@ import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
 import { Zap, Hexagon, Slash, ArrowDownCircle } from "react-feather";
 
-
 import CanModel from "../canModel/index.jsx";
-
-
 
 const CanvasComponent = ({ setToJump, toJump, isVisible }) => {
   const canvasRef = useRef();
@@ -67,7 +64,7 @@ const CanvasComponent = ({ setToJump, toJump, isVisible }) => {
   );
 };
 
-export default function Home() { 
+export default function Home() {
   const [isCanvasVisible, setCanvasVisible] = useState(false);
   const nextSectionRef = useRef(null);
   const carSectionRef = useRef(null);
@@ -108,12 +105,12 @@ export default function Home() {
 
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
-      <section className="snap-start h-screen flex flex-row items-center justify-center bg-blue-500 gap-10">
-        <div className="flex flex-row items-center justify-center">
+      <section className="snap-start h-screen flex flex-row items-center justify-center bg-blue-0 gap-10">
+        <div className="flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0, duration: 0.7 }}
+            transition={{ delay: 0.1, duration: 0.8 }}
           >
             <h2 className="text-white text-3xl">
               Experience the world's first
@@ -122,13 +119,16 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.7 }}
+            transition={{ delay: 1.1, duration: 0.8 }}
           >
             <h2 className="text-white text-3xl">designer energy drink</h2>
           </motion.div>
         </div>
       </section>
-      <section ref={nextSectionRef} className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
+      <section
+        ref={nextSectionRef}
+        className="snap-start h-screen w-full flex items-center justify-center bg-green-500"
+      >
         <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
           <Canvas className="w-full h-full">
             <ambientLight intensity={0.1} />
@@ -241,9 +241,16 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <section ref={carSectionRef} className="snap-start h-screen flex items-center justify-center bg-red-500">
+      <section
+        ref={carSectionRef}
+        className="snap-start h-screen flex items-center justify-center bg-red-500"
+      >
         <motion.div className="w-full flex h-full justify-center items-center bg-gray-800">
-          <CanvasComponent setToJump={setToJump} toJump={toJump} isVisible={isCanvasVisible}/>
+          <CanvasComponent
+            setToJump={setToJump}
+            toJump={toJump}
+            isVisible={isCanvasVisible}
+          />
         </motion.div>
       </section>
       {/* Add more sections as needed */}
