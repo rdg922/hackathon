@@ -49,3 +49,16 @@ body {
     text-wrap: balance;
   }
 }
+
+.heavy-blur {
+  filter: blur(500px); /* Adjust the blur value as needed */
+}
+
+.medium-blur {
+  filter: blur(400px); /* Adjust the blur value as needed */
+}
+
+.small-blur {
+  filter: blur(300px); /* Adjust the blur value as needed */
+}
+

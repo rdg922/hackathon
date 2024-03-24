@@ -112,37 +112,43 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
+    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar relative">
       <section className="snap-start h-screen flex flex-col flex-row items-center justify-center gap-5 bg-blue-0">
+        <div className="absolute w-[800px] h-[800px] bg-red-500 rounded-full heavy-blur" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}></div>
+
         <motion.div
+        className="mt-auto z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.8 }}
         >
-          <h2 className="text-white text-4xl">Experience the world's first</h2>
+          <h2 className="text-white text-8xl">Experience the world's first</h2>
         </motion.div>
         <motion.div
+        className="z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          <h2 className="text-white text-4xl">designer energy drink</h2>
+          <h2 className="text-white text-8xl">designer energy drink</h2>
         </motion.div>
         <motion.div
+        className="mt-auto mb-[16px] z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
           style={{ justifySelf: "left" }}
         >
-          <ArrowDown color="white" size={60} strokeWidth={1.5} />
+          <ArrowDown color="white" size={120} strokeWidth={1.5} />
         </motion.div>
       </section>
       <section
         ref={nextSectionRef}
-        className="snap-start h-screen w-full flex items-center justify-center bg-green-500"
+        className="snap-start h-screen w-full flex items-center justify-center bg-green-0 "
       >
-        <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
-          <Canvas className="w-full h-full">
+        <motion.div className="w-1/2 flex h-full justify-center items-center relative">
+          <div className="absolute w-[500px] h-[500px] bg-white rounded-full small-blur" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}></div>
+          <Canvas className="w-full h-full z-10">
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
               <CanModel />
@@ -150,25 +156,26 @@ export default function Home() {
             <Environment preset="sunset" />
           </Canvas>
         </motion.div>
-        <div className="w-1/2 h-full flex flex-col justify-center items-start bg-gray-900 px-2 gap-5">
-          <h2 className="text-white font-bold text-4xl md:text-5xl lg:text-7xl">
+        <div className="w-1/2 h-full flex flex-col justify-center items-start px-2 gap-5 relative z-10">
+          <div className="absolute w-[700px] h-[700px] bg-green-500 rounded-full medium-blur" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}></div>
+          <h2 className="text-white font-bold text-4xl md:text-5xl lg:text-7xl z-20">
             Dino Luzzi Energy Drink
           </h2>
-          <h3 className="text-gray-400 text-3xl md:text-3xl lg:text-4xl">Find your Power</h3>
-          <div className="flex flex-row gap-5">
-            <div className="flex flex-col gap-4">
-              <div className="bg-gray-700 rounded-lg p-4">
+          <h3 className="text-gray-400 text-3xl md:text-3xl lg:text-4xl z-20">Find your Power</h3>
+          <div className="flex flex-row gap-5 z-20">
+            <div className="flex flex-col gap-4 z-20">
+              <div className="bg-gray-700 rounded-2xl p-4 z-20">
               <ResponsiveIcon Icon={Zap} />
 
               </div>
 
-              <div className="flex items-center justify-center max-w-[85px]">
-                <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
+              <div className="flex items-center justify-center max-w-[85px] z-20">
+                <h3 className="text-slate-300 text-sm z-20">Long lasting energy</h3>
               </div>
             </div>
 
-            <div className="flex flex-col gap-4">
-              <div className="motion-div bg-gray-700 rounded-lg p-4">
+            <div className="flex flex-col gap-4 z-20">
+              <div className="motion-div bg-gray-700 rounded-2xl p-4">
               <ResponsiveIcon Icon={Hexagon} />
               </div>
               <div className="flex items-center justify-center max-w-[85px]">
@@ -179,7 +186,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="motion-div bg-gray-700 rounded-lg p-4">
+              <div className="motion-div bg-gray-700 rounded-2xl p-4">
               <ResponsiveIcon Icon={Slash}/>
               </div>
               <div className="flex items-center justify-center max-w-[85px]">
@@ -190,7 +197,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <div className="motion-div bg-gray-700 rounded-lg p-4">
+              <div className="motion-div bg-gray-700 rounded-2xl p-4">
               <ResponsiveIcon Icon={ArrowDownCircle}/>
 
               </div>
@@ -235,7 +242,7 @@ export default function Home() {
 //   return (
 //     <main className="flex min-h-screen flex-col items-center justify-between p-24">
 //       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-//         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+//         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-2xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
 //           Get started by editing&nbsp;
 //           <code className="font-mono font-bold">src/app/page.js</code>
 //         </p>
@@ -273,7 +280,7 @@ export default function Home() {
 //       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
 //         <a
 //           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+//           className="group rounded-2xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //         >
@@ -290,7 +297,7 @@ export default function Home() {
 
 //         <a
 //           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
+//           className="group rounded-2xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //         >
@@ -307,7 +314,7 @@ export default function Home() {
 
 //         <a
 //           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+//           className="group rounded-2xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //         >
@@ -324,7 +331,7 @@ export default function Home() {
 
 //         <a
 //           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+//           className="group rounded-2xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
 //           target="_blank"
 //           rel="noopener noreferrer"
 //         >
