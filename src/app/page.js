@@ -1,24 +1,110 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion, AnimatePresence } from "framer-motion";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
+import { createRoot } from "react-dom/client";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
 import { Zap, Hexagon, Slash, ArrowDownCircle } from "react-feather";
 
-import Link from "next/link";
 
 import CanModel from "../canModel/index.jsx";
 
-import HeroSection from "@/sections/heroSection";
-import CanSection from "@/sections/canSection";
-import CarSection from "@/sections/carSection";
 
-const sections = [HeroSection, CanSection, CarSection];
 
-export default function Home() {
+const CanvasComponent = ({ setToJump, toJump }) => {
+  const canvasRef = useRef();
+
+  // Lock scroll function
+  const lockScroll = useCallback((e) => {
+    e.preventDefault();
+  }, []);
+
+  // Adds event listeners to lock scroll when mouse is over the canvas
+  const addLockListeners = useCallback(() => {
+    if (canvasRef.current)
+      canvasRef.current.addEventListener("wheel", lockScroll, {
+        passive: false,
+      });
+  }, [lockScroll]);
+
+  // Removes event listeners to allow scrolling when mouse is not over the canvas
+  const removeLockListeners = useCallback(() => {
+    if (canvasRef.current)
+      canvasRef.current.removeEventListener("wheel", lockScroll);
+  }, [lockScroll]);
+
+  // UseEffect to attach and clean up the event listeners
+  useEffect(() => {
+    const canvasElement = canvasRef.current;
+    if (canvasElement) {
+      addLockListeners();
+      return () => {
+        removeLockListeners();
+      };
+    }
+  }, [addLockListeners, removeLockListeners]);
+
+  return (
+    <Canvas
+      className="w-full h-full"
+      ref={canvasRef}
+      onPointerOver={addLockListeners}
+      onPointerOut={removeLockListeners}
+    >
+      <Physics broadphase="SAP" gravity={[0, -2.6, 0]}>
+        <Scene
+          resetSignal={toJump}
+          goToNextSection={() => {
+            if (!toJump) setToJump(true);
+          }}
+        />
+      </Physics>
+    </Canvas>
+  );
+};
+
+export default function Home() { 
+  const [isCanvasVisible, setCanvasVisible] = useState(false);
+  const nextSectionRef = useRef(null);
+  const carSectionRef = useRef(null);
+
+  const [toJump, setToJump] = useState(false);
+
+  useEffect(() => {
+    console.log("test");
+    if (toJump)
+      if (nextSectionRef.current) {
+        nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    // Assuming the scroll will take approximately 500ms to complete
+    setTimeout(() => {
+      setToJump(false); // Reset toJump to false after the scroll
+    }, 500);
+  }, [toJump]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setCanvasVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Adjust based on when you want to load/unload the Canvas
+    );
+
+    if (carSectionRef.current) {
+      observer.observe(carSectionRef.current);
+    }
+
+    return () => {
+      if (carSectionRef.current) {
+        observer.unobserve(carSectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
       <section className="snap-start h-screen flex flex-row items-center justify-center bg-blue-500 gap-10">
@@ -41,7 +127,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
+      <section ref={nextSectionRef} className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
         <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
           <Canvas className="w-full h-full">
             <ambientLight intensity={0.1} />
@@ -154,13 +240,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      <section className="snap-start h-screen flex items-center justify-center bg-red-500">
+      <section ref={carSectionRef} className="snap-start h-screen flex items-center justify-center bg-red-500">
         <motion.div className="w-full flex h-full justify-center items-center bg-gray-800">
-          <Canvas className="w-full h-full">
-            <Physics broadphase="SAP" gravity={[0, -2.6, 0]}>
-              <Scene />
-            </Physics>
-          </Canvas>
+          <CanvasComponent setToJump={setToJump} toJump={toJump} isVisible={isCanvasVisible}/>
         </motion.div>
       </section>
       {/* Add more sections as needed */}

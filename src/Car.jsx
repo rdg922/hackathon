@@ -7,7 +7,7 @@ import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
 
-export function Car({ thirdPerson }) {
+export function Car({ thirdPerson, goToNextSection, resetSignal }) {
   // thanks to the_86_guy!
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
@@ -43,7 +43,7 @@ export function Car({ thirdPerson }) {
     useRef(null),
   );
 
-  useControls(vehicleApi, chassisApi);
+  useControls(vehicleApi, chassisApi, resetSignal, chassisBody);
 
   useFrame((state) => {
     
@@ -64,6 +64,11 @@ export function Car({ thirdPerson }) {
     wDir.add(new Vector3(0, 0.2, 0));
     state.camera.position.copy(cameraPosition);
     state.camera.lookAt(position);
+
+    if (position.z > 4) {
+      goToNextSection();
+      
+    }
   });
 
   useEffect(() => {

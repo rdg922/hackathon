@@ -47,7 +47,7 @@ export default function CanModel({ onModelLoaded }) {
     return () => {
       window.removeEventListener("resize", setPosition);
     };
-  }, [camera, size.width, size.height, scale]); // React to changes in size, camera, or scale
+  }, [size.width, size.height, scale]); // React to changes in size, camera, or scale
 
   useFrame(() => {
     if (!mesh.current) return;
