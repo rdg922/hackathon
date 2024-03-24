@@ -114,10 +114,17 @@ export default function Home() {
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar relative">
       <section className="snap-start h-screen flex flex-col flex-row items-center justify-center gap-5 bg-blue-0">
-        <div className="absolute w-[800px] h-[800px] bg-red-500 rounded-full heavy-blur" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}></div>
+        <div
+          className="absolute w-[800px] h-[800px] bg-red-500 rounded-full heavy-blur"
+          style={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        ></div>
 
         <motion.div
-        className="mt-auto z-10"
+          className="mt-auto z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.8 }}
@@ -125,7 +132,7 @@ export default function Home() {
           <h2 className="text-white text-8xl">Experience the world's first</h2>
         </motion.div>
         <motion.div
-        className="z-10"
+          className="z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
@@ -133,7 +140,7 @@ export default function Home() {
           <h2 className="text-white text-8xl">designer energy drink</h2>
         </motion.div>
         <motion.div
-        className="mt-auto mb-[16px] z-10"
+          className="mt-auto mb-[16px] z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.8 }}
@@ -147,7 +154,14 @@ export default function Home() {
         className="snap-start h-screen w-full flex items-center justify-center bg-green-0 "
       >
         <motion.div className="w-1/2 flex h-full justify-center items-center relative">
-          <div className="absolute w-[500px] h-[500px] bg-white rounded-full small-blur" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}></div>
+          <div
+            className="absolute w-[500px] h-[500px] bg-white rounded-full small-blur"
+            style={{
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
           <Canvas className="w-full h-full z-10">
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
@@ -157,26 +171,36 @@ export default function Home() {
           </Canvas>
         </motion.div>
         <div className="w-1/2 h-full flex flex-col justify-center items-start px-2 gap-5 relative z-10">
-          <div className="absolute w-[700px] h-[700px] bg-green-500 rounded-full medium-blur" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}></div>
+          <div
+            className="absolute w-[700px] h-[700px] bg-green-500 rounded-full medium-blur"
+            style={{
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
           <h2 className="text-white font-bold text-4xl md:text-5xl lg:text-7xl z-20">
             Dino Luzzi Energy Drink
           </h2>
-          <h3 className="text-gray-400 text-3xl md:text-3xl lg:text-4xl z-20">Find your Power</h3>
+          <h3 className="text-gray-400 text-3xl md:text-3xl lg:text-4xl z-20">
+            Find your Power
+          </h3>
           <div className="flex flex-row gap-5 z-20">
             <div className="flex flex-col gap-4 z-20">
               <div className="bg-gray-700 rounded-2xl p-4 z-20">
-              <ResponsiveIcon Icon={Zap} />
-
+                <ResponsiveIcon Icon={Zap} />
               </div>
 
               <div className="flex items-center justify-center max-w-[85px] z-20">
-                <h3 className="text-slate-300 text-sm z-20">Long lasting energy</h3>
+                <h3 className="text-slate-300 text-sm z-20">
+                  Long lasting energy
+                </h3>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 z-20">
               <div className="motion-div bg-gray-700 rounded-2xl p-4">
-              <ResponsiveIcon Icon={Hexagon} />
+                <ResponsiveIcon Icon={Hexagon} />
               </div>
               <div className="flex items-center justify-center max-w-[85px]">
                 <h3 className="text-slate-300 text-sm">
@@ -187,7 +211,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-4">
               <div className="motion-div bg-gray-700 rounded-2xl p-4">
-              <ResponsiveIcon Icon={Slash}/>
+                <ResponsiveIcon Icon={Slash} />
               </div>
               <div className="flex items-center justify-center max-w-[85px]">
                 <h3 className="text-slate-300 text-sm">
@@ -198,8 +222,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-4">
               <div className="motion-div bg-gray-700 rounded-2xl p-4">
-              <ResponsiveIcon Icon={ArrowDownCircle}/>
-
+                <ResponsiveIcon Icon={ArrowDownCircle} />
               </div>
               <div className="flex items-center justify-center max-w-[85px]">
                 <h3 className="text-slate-300 text-sm">
@@ -223,9 +246,9 @@ export default function Home() {
       </section>
       <section
         ref={carSectionRef}
-        className="snap-start h-screen flex items-center justify-center bg-red-500"
+        className="snap-start h-screen flex items-center justify-center bg-red-200"
       >
-        <motion.div className="w-full flex h-full justify-center items-center bg-gray-800">
+        <motion.div className="w-full flex h-full justify-center items-center bg-black">
           <CanvasComponent
             setToJump={setToJump}
             toJump={toJump}

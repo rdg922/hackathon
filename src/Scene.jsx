@@ -16,7 +16,7 @@ export function Scene({ goToNextSection, resetSignal, isVisible }) {
 
   return (
     <Suspense fallback={null}>
-      <Environment files={"/textures/envmap.hdr"} background={"both"} />
+      <Environment files={"/textures/envmap.hdr"} background={false} />
 
       <PerspectiveCamera makeDefault position={[-6, 3.9, 6.21]} fov={40} />
 
