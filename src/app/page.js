@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
-import { Zap, Hexagon, Slash, ArrowDownCircle } from "react-feather";
+import { Zap, Hexagon, Slash, ArrowDownCircle, ArrowDown } from "react-feather";
 
 import CanModel from "../canModel/index.jsx";
 
@@ -74,31 +74,26 @@ export default function Home() {
   useEffect(() => {
     let timeoutId = null;
 
-    if (toJump && isCanvasVisible){
+    if (toJump && isCanvasVisible) {
       if (nextSectionRef.current) {
         nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
         timeoutId = setTimeout(() => {
-          console.log("jumped!")
+          console.log("jumped!");
           setToJump(false);
-        }, 600)
+        }, 600);
       }
     }
-    
-      if (timeoutId != null) {
-        return () => clearTimeout(timeoutId);
-      }
+
+    if (timeoutId != null) {
+      return () => clearTimeout(timeoutId);
+    }
   }, [toJump, isCanvasVisible]);
 
   useEffect(() => {
-
-
-
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         setCanvasVisible(entry.isIntersecting);
-
-
       },
       { threshold: 0.1 } // Adjust based on when you want to load/unload the Canvas
     );
@@ -116,31 +111,35 @@ export default function Home() {
 
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
-      <section className="snap-start h-screen flex flex-row items-center justify-center bg-blue-0 gap-10">
-        <div className="flex flex-col items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.8 }}
-          >
-            <h2 className="text-white text-3xl">
-              Experience the world's first
-            </h2>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.1, duration: 0.8 }}
-          >
-            <h2 className="text-white text-3xl">designer energy drink</h2>
-          </motion.div>
-        </div>
+      <section className="snap-start h-screen flex flex-col flex-row items-center justify-center gap-5 bg-blue-0">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1, duration: 0.8 }}
+        >
+          <h2 className="text-white text-4xl">Experience the world's first</h2>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
+        >
+          <h2 className="text-white text-4xl">designer energy drink</h2>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 0.8 }}
+          style={{ justifySelf: "left" }}
+        >
+          <ArrowDown color="white" size={60} strokeWidth={1.5} />
+        </motion.div>
       </section>
       <section
         ref={nextSectionRef}
-        className="snap-start h-screen w-full flex items-center justify-center bg-green-500"
+        className="snap-start h-screen w-full flex items-center justify-center bg-green-0"
       >
-        <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
+        <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-0">
           <Canvas className="w-full h-full">
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
@@ -150,7 +149,7 @@ export default function Home() {
           </Canvas>
         </motion.div>
         <div
-          className="w-1/2 h-full justify-center  items-left bg-gray-900 px-2 flex gap-5 "
+          className="w-1/2 h-full justify-center  items-left bg-gray-0 px-2 flex gap-5 "
           style={{ flexDirection: "column" }}
         >
           <h2 className="text-white font-bold text-5xl">
