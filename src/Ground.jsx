@@ -4,6 +4,7 @@ import { useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { BufferAttribute } from "three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
+import { ColliderBox } from "./ColliderBox";
 
 export function Ground() {
   const [ref] = usePlane(
@@ -54,7 +55,7 @@ export function Ground() {
     <>
       <mesh
         ref={meshRef2}
-        position={[-1.5, 0.001, -1.325]}
+        position={[-1.5, 0.002, -1.325]}
         rotation-x={-Math.PI * 0.5}
         rotation-z={Math.PI * 1}
         scale={[0.21, 0.8, 1]}
@@ -76,9 +77,9 @@ export function Ground() {
 
       <mesh
         ref={meshRef}
-        position={[-2.285, -0.015, -1.325]}
+        position={[-1.5, -0.01, -1.325]}
         rotation-x={-Math.PI * 0.5}
-        rotation-z={-0.079}
+        rotation-z={0}
       >
         <circleGeometry args={[6.12, 50]} />
         <MeshReflectorMaterial
@@ -103,6 +104,7 @@ export function Ground() {
           reflectorOffset={0.02} // Offsets the virtual camera that projects the reflection. Useful when the reflective
         ></MeshReflectorMaterial>
       </mesh>
+      <ColliderBox position={[-1.53, 0.0, -5.4]} scale={[2, 1, 0.3]} />
     </>
   );
 }

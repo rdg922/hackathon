@@ -12,7 +12,7 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(GLTFLoader, "./model/car_new.glb").scene;
 
-  const position = [-1.67, 0.5, 3];
+  const position = [-1.64, 0.1, 3.6];
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
@@ -56,13 +56,13 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
     // change the numbers to move the camera position
     let cameraPosition = position
       .clone()
-      .add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 2.8, -3.5)));
+      .add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 2.0, -2.9)));
 
     wDir.add(new Vector3(0, 0.2, 0));
     state.camera.position.copy(cameraPosition);
     state.camera.lookAt(position);
 
-    if (position.z > 4) {
+    if (position.z > 3.6) {
       goToNextSection();
     }
   });
