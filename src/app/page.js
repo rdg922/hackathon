@@ -108,15 +108,25 @@ export default function Home() {
 
   return (
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
-      <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
-        <h2 className="text-white text-3xl">Section 1</h2>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.4 }}
-        >
-          <h1>World's</h1>
-        </motion.div>
+      <section className="snap-start h-screen flex flex-row items-center justify-center bg-blue-500 gap-10">
+        <div className="flex flex-row items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0, duration: 0.7 }}
+          >
+            <h2 className="text-white text-3xl">
+              Experience the world's first
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.7 }}
+          >
+            <h2 className="text-white text-3xl">designer energy drink</h2>
+          </motion.div>
+        </div>
       </section>
       <section ref={nextSectionRef} className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
         <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
