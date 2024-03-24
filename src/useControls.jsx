@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 
 export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
-  let [controls, setControls] = useState({ });
+  let [controls, setControls] = useState({});
 
   useEffect(() => {
     const keyDownPressHandler = (e) => {
       setControls((controls) => ({ ...controls, [e.key.toLowerCase()]: true }));
-    }
+    };
 
     const keyUpPressHandler = (e) => {
-      setControls((controls) => ({ ...controls, [e.key.toLowerCase()]: false }));
-    }
+      setControls((controls) => ({
+        ...controls,
+        [e.key.toLowerCase()]: false,
+      }));
+    };
     let scrollEndTimer = null;
 
     const handleScroll = (e) => {
@@ -24,9 +27,8 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
       scrollEndTimer = setTimeout(() => {
         setControls({ forward: false, backward: false });
       }, 300); // Adjust delay as needed
-    }
+    };
 
-    
     window.addEventListener("wheel", handleScroll, { passive: true });
     window.addEventListener("keydown", keyDownPressHandler);
     window.addEventListener("keyup", keyUpPressHandler);
@@ -34,11 +36,11 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
       window.removeEventListener("keydown", keyDownPressHandler);
       window.removeEventListener("keyup", keyUpPressHandler);
       window.removeEventListener("wheel", handleScroll);
-    }
+    };
   }, []);
 
   useEffect(() => {
-    if(!vehicleApi || !chassisApi || !isVisible) return;
+    if (!vehicleApi || !chassisApi || !isVisible) return;
 
     if (controls.forward || controls.w) {
       vehicleApi.applyEngineForce(400, 2);
@@ -70,11 +72,8 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
       // vehicleApi.setBrake(10, 3);
     }
 
-    
-
-
     if (controls.r || resetSignal || !isVisible) {
-      chassisApi.position.set(-1.5, 0.5, 3);
+      chassisApi.position.set(-1.64, 0.5, 3);
       chassisApi.velocity.set(0, 0, 0);
       chassisApi.angularVelocity.set(0, 0, 0);
       chassisApi.rotation.set(0, 0, 0);
@@ -82,4 +81,4 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
   }, [controls, vehicleApi, chassisApi]);
 
   return controls;
-}
+};

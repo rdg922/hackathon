@@ -7,33 +7,38 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 
 export function Ground() {
   const [ref] = usePlane(
-    () => ({ 
-      type: 'Static', 
-      rotation: [-Math.PI / 2, 0, 0] }
-    ), 
+    () => ({
+      type: "Static",
+      rotation: [-Math.PI / 2, 0, 0],
+    }),
     useRef(null)
   );
 
-  const gridMap = useLoader(
+  const racetrackText = useLoader(
     TextureLoader,
-    "/textures/combined_scroller.png"
+    "/textures/Racetrack_text.png"
+  );
+  const racetrackBackground = useLoader(
+    TextureLoader,
+    "/textures/Racetrack_background.png"
   );
 
-  
-
-  const alphaMap = useLoader(
-    TextureLoader,
-    "/textures/alpha-map.png"
-  );
+  const alphaMap = useLoader(TextureLoader, "/textures/alpha-map.png");
 
   const meshRef = useRef(null);
   const meshRef2 = useRef(null);
 
   useEffect(() => {
-    if (!gridMap) return;
+    if (!racetrackText) return;
 
-    gridMap.anisotropy = 16;
-  }, [gridMap]);
+    racetrackText.anisotropy = 16;
+  }, [racetrackText]);
+
+  useEffect(() => {
+    if (!racetrackBackground) return;
+
+    racetrackBackground.anisotropy = 16;
+  }, [racetrackBackground]);
 
   useEffect(() => {
     if (!meshRef.current) return;
@@ -49,17 +54,24 @@ export function Ground() {
     <>
       <mesh
         ref={meshRef2}
-        position={[-1.5, -0.01, -1.325]}
-        rotation-x={-Math.PI * .5}
+        position={[-1.5, 0.001, -1.325]}
+        rotation-x={-Math.PI * 0.5}
         rotation-z={Math.PI * 1}
-        scale={[.5,1,.5]}
+        scale={[0.21, 0.8, 1]}
       >
         <planeGeometry args={[12, 12]} />
-        <meshBasicMaterial
-          
-          map={gridMap}
-          
-        />
+        <meshBasicMaterial map={racetrackBackground} transparent={true} />
+      </mesh>
+
+      <mesh
+        ref={meshRef2}
+        position={[-1.5, 0.25, -1.325]}
+        rotation-x={-Math.PI * 0.5}
+        rotation-z={Math.PI * 1}
+        scale={[0.21, 0.8, 1]}
+      >
+        <planeGeometry args={[12, 12]} />
+        <meshBasicMaterial map={racetrackText} transparent={true} />
       </mesh>
 
       <mesh
@@ -67,7 +79,6 @@ export function Ground() {
         position={[-2.285, -0.015, -1.325]}
         rotation-x={-Math.PI * 0.5}
         rotation-z={-0.079}
-        
       >
         <circleGeometry args={[6.12, 50]} />
         <MeshReflectorMaterial
@@ -76,8 +87,7 @@ export function Ground() {
           color={[0.5, 0.5, 0.5]}
           envMapIntensity={0.3}
           metalness={0.05}
-          roughness={.9}
-
+          roughness={0.9}
           dithering={true}
           blur={[1024, 512]} // Blur ground reflections (width, heigt), 0 skips blur
           mixBlur={3} // How much blur mixes with surface roughness (default = 1)

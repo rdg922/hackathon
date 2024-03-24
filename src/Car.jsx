@@ -10,12 +10,9 @@ import { WheelDebug } from "./WheelDebug";
 export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
   // thanks to the_86_guy!
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
-  let result = useLoader(
-    GLTFLoader,
-    "./model/car_new.glb"
-  ).scene;
+  let result = useLoader(GLTFLoader, "./model/car_new.glb").scene;
 
-  const position = [-1.5, 0.5, 3];
+  const position = [-1.67, 0.5, 3];
   const width = 0.15;
   const height = 0.07;
   const front = 0.15;
@@ -29,7 +26,7 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
       mass: 150,
       position,
     }),
-    useRef(null),
+    useRef(null)
   );
 
   const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
@@ -40,34 +37,33 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
       wheelInfos,
       wheels,
     }),
-    useRef(null),
+    useRef(null)
   );
 
   useControls(vehicleApi, chassisApi, resetSignal, isVisible);
 
   useFrame((state) => {
-    
-
-    let position = new Vector3(0,0,0);
+    let position = new Vector3(0, 0, 0);
     position.setFromMatrixPosition(chassisBody.current.matrixWorld);
 
     let quaternion = new Quaternion(0, 0, 0, 0);
     quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
 
-    let wDir = new Vector3(0,0,1);
+    let wDir = new Vector3(0, 0, 1);
     //wDir.applyQuaternion(quaternion);
     wDir.normalize();
 
     // change the numbers to move the camera position
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 5, -4)));
-    
+    let cameraPosition = position
+      .clone()
+      .add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 2.8, -3.5)));
+
     wDir.add(new Vector3(0, 0.2, 0));
     state.camera.position.copy(cameraPosition);
     state.camera.lookAt(position);
 
     if (position.z > 4) {
       goToNextSection();
-      
     }
   });
 
@@ -83,9 +79,9 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
   return (
     <group ref={vehicle} name="vehicle">
       <group ref={chassisBody} name="chassisBody">
-        <primitive object={result} rotation-y={Math.PI} position={[0, -0.09, 0]}/>
+        <primitive object={result} rotation-y={Math.PI} position={[0, 0, 0]} />
       </group>
-      
+
       {/* <mesh ref={chassisBody}>
         <meshBasicMaterial transparent={true} opacity={0.3} />
         <boxGeometry args={chassisBodyArgs} />
