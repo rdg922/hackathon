@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import { Scene } from "../Scene";
@@ -23,6 +23,13 @@ export default function Home() {
     <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
       <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
         <h2 className="text-white text-3xl">Section 1</h2>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
+        >
+          <h1>World's</h1>
+        </motion.div>
       </section>
       <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
         <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
@@ -45,7 +52,7 @@ export default function Home() {
           <div style={{ gap: 20, flexDirection: "row", display: "flex" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 0 }}
+                //whileHover={{ scale: 1.1, rotate: 0 }}
                 style={{ borderRadius: 20, padding: 15 }}
                 className="bg-gray-700"
               >
@@ -61,7 +68,7 @@ export default function Home() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 0 }}
+                //whileHover={{ scale: 1.1, rotate: 0 }}
                 style={{ borderRadius: 20, padding: 15 }}
                 className="bg-gray-700"
               >
@@ -79,7 +86,7 @@ export default function Home() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 0 }}
+                //whileHover={{ scale: 1.1, rotate: 0 }}
                 style={{ borderRadius: 20, padding: 15 }}
                 className="bg-gray-700"
               >
@@ -97,7 +104,7 @@ export default function Home() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 0 }}
+                //whileHover={{ scale: 1.1, rotate: 0 }}
                 style={{ borderRadius: 20, padding: 15 }}
                 className="bg-gray-700"
               >
@@ -114,7 +121,7 @@ export default function Home() {
             </div>
           </div>
           <motion.div
-            whileHover={{ scale: 1.2, rotate: 0 }}
+            whileHover={{ scale: 1.1, rotate: 0 }}
             whileTap={{
               scale: 0.8,
               borderRadius: "100%",
