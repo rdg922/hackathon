@@ -4,8 +4,8 @@ This project is a submission for the Dino Luzzi Energy Challenge as part of the 
 
 ## Features
 
-- **Overhauled UI/UX**: We've redesigned the website with a flat, modern look to make it easier for people to understand the main selling points of the product.
-- **3D Car Model**: As a nod to the Dino Luzzi Racing team, we've included the Dino Luzzi racecar in the the website. This adds an interactive element to the site to engage with customers and present information in a novel and interesting way.
+- **Overhauled UI/UX**: We've redesigned the website with a flat, modern look to make it easier for customers to understand the main selling points of the product.
+- **Interactive 3d Scene**: As a nod to the Dino Luzzi Racing team, we've included the Dino Luzzi racecar in the the website. This adds an interactive element to the site to engage with customers and present information in a novel and interesting way.
 
 ## Setup Instructions
 
@@ -29,4 +29,4 @@ To use this project, navigate to the project directory and start the development
 
 ## Acknowledgements
 
-We would like to thank OSCHack for organizing the hackathon and Dino Luzzi Energy for providing the challenge. We hope our redesign meets the challenge's goals and provides an improved user experience for Dino Luzzi Energy's customers.
+We would like to thank OSCHack for organizing the hackathon and Dino Luzzi Energy for providing the challenge. We hope our redesign meets the challenge's goals and provides an improved user experience for Dino Luzzi's customers.
