@@ -6,7 +6,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
-import { Zap } from "react-feather";
+import { Zap, Hexagon, Slash, ArrowDownCircle } from "react-feather";
 
 import Link from "next/link";
 
@@ -41,17 +41,15 @@ export default function Home() {
           <h2 className="text-white font-bold text-5xl">
             Dino Luzzi Energy Drink
           </h2>
-          <h3 className="text-white text-3xl">
-            The best energy drink in the world
-          </h3>
+          <h3 className="text-white text-3xl">Find your power</h3>
           <div style={{ gap: 20, flexDirection: "row", display: "flex" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 0 }}
-                style={{ borderRadius: 20, padding: 9 }}
+                style={{ borderRadius: 20, padding: 15 }}
                 className="bg-gray-700"
               >
-                <Zap color="#A48BFF" size={70} strokeWidth={1} />
+                <Zap color="#A48BFF" size={60} strokeWidth={1.5} r />
               </motion.div>
               <div
                 classname="items-center flex justify-center"
@@ -64,32 +62,54 @@ export default function Home() {
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 0 }}
-                style={{ borderRadius: 20, padding: 9 }}
+                style={{ borderRadius: 20, padding: 15 }}
                 className="bg-gray-700"
               >
-                <Zap color="#A48BFF" size={70} strokeWidth={1} />
+                <Hexagon color="#A48BFF" size={60} strokeWidth={1.5} />
               </motion.div>
               <div
                 classname="items-center flex justify-center"
                 style={{ maxWidth: 85 }}
               >
-                <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
+                <h3 className="text-slate-300 text-sm">
+                  Contains vitamins B2, B12, B13
+                </h3>
               </div>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 0 }}
-                style={{ borderRadius: 20, padding: 9 }}
+                style={{ borderRadius: 20, padding: 15 }}
                 className="bg-gray-700"
               >
-                <Zap color="#A48BFF" size={70} strokeWidth={1} />
+                <Slash color="#A48BFF" size={60} strokeWidth={1.5} />
               </motion.div>
               <div
                 classname="items-center flex justify-center"
                 style={{ maxWidth: 85 }}
               >
-                <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
+                <h3 className="text-slate-300 text-sm">
+                  Made with zero fat or cholesteral
+                </h3>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 0 }}
+                style={{ borderRadius: 20, padding: 15 }}
+                className="bg-gray-700"
+              >
+                <ArrowDownCircle color="#A48BFF" size={60} strokeWidth={1.5} />
+              </motion.div>
+              <div
+                classname="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
+                <h3 className="text-slate-300 text-sm">
+                  Only 115 calories per can
+                </h3>
               </div>
             </div>
           </div>
