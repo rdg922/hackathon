@@ -130,7 +130,7 @@ export default function Home() {
     <div className="snap-y snap-mandatory snap-start h-screen overflow-scroll md:no-scrollbar relative">
       <section className="snap-start h-screen flex flex-col flex-row items-center justify-center gap-5 bg-blue-0">
         <div
-          className="absolute w-[600px] h-[600px] bg-red-500 rounded-full heavy-blur"
+          className="absolute w-[400px] h-[400px] bg-red-500 rounded-full heavy-blur"
           style={{
             top: "50%",
             left: "50%",
@@ -187,7 +187,7 @@ export default function Home() {
         </motion.div>
         <div className="w-1/2 h-full flex flex-col justify-center items-start px-2 gap-5 relative z-10">
           <div
-            className="absolute w-[700px] h-[700px] bg-green-500 rounded-full medium-blur"
+            className="absolute w-[300px] h-[300px] bg-green-500 rounded-full medium-blur"
             style={{
               top: "50%",
               left: "50%",
@@ -200,60 +200,60 @@ export default function Home() {
           <h3 className="w-full text-gray-400 text-2xl md:text-3xl lg:text-3xl z-20 py-2">
             Find your Power
           </h3>
-          <div className="flex flex-row gap-10 z-20 py-2">
-            <div className="flex flex-col gap-8 z-20">
-              <div className="bg-gray-700 rounded-3xl p-6 z-20">
+          <div className="flex flex-row gap-6 z-20 py-2">
+            <div className="flex flex-col gap-4 z-20">
+              <div className="bg-gray-700 rounded-3xl p-5 z-20">
                 <ResponsiveIcon Icon={Zap} />
               </div>
 
               <div className="flex items-center justify-center z-20">
-                <h3 className="text-slate-300 text-lg z-20 max-w-[128px]">
+                <h3 className="text-slate-300 text-md z-20 max-w-[80px]">
                   Long lasting energy
                 </h3>
               </div>
             </div>
 
-            <div className="flex flex-col gap-8 z-20">
-              <div className="motion-div bg-gray-700 rounded-3xl p-6 ">
+            <div className="flex flex-col gap-4 z-20">
+              <div className="motion-div bg-gray-700 rounded-3xl p-5 ">
                 <ResponsiveIcon Icon={Hexagon} />
               </div>
               <div className="flex items-center justify-center ">
-                <h3 className="text-slate-300 text-lg  max-w-[128px]">
+                <h3 className="text-slate-300 text-md  max-w-[80px]">
                   Contains vitamins B2, B12, B13
                 </h3>
               </div>
             </div>
 
-            <div className="flex flex-col gap-8">
-              <div className="motion-div bg-gray-700 rounded-3xl p-6">
+            <div className="flex flex-col gap-4">
+              <div className="motion-div bg-gray-700 rounded-3xl p-5">
                 <ResponsiveIcon Icon={Slash} />
               </div>
               <div className="flex items-center justify-center">
-                <h3 className="text-slate-300 text-lg  max-w-[128px]">
+                <h3 className="text-slate-300 text-md  max-w-[80px]">
                   Made with zero fat or cholesterol
                 </h3>
               </div>
             </div>
 
-            <div className="flex flex-col gap-8">
-              <div className="motion-div bg-gray-700 rounded-3xl p-6">
+            <div className="flex flex-col gap-4">
+              <div className="motion-div bg-gray-700 rounded-3xl p-5">
                 <ResponsiveIcon Icon={ArrowDownCircle} />
               </div>
               <div className="flex items-center justify-center ">
-                <h3 className="text-slate-300 text-lg  max-w-[128px]">
+                <h3 className="text-slate-300 text-md  max-w-[80px]">
                   Only 115 calories per can
                 </h3>
               </div>
             </div>
           </div>
-          <div className="motion-div hover:scale-110 hover:rotate-0 tap:scale-80 tap:rounded-full bg-white rounded-full w-fit mt-6">
+          <div className="motion-div hover:scale-110 hover:rotate-0 tap:scale-80 tap:rounded-full bg-white rounded-full w-fit mt-3">
             <a
               href="https://www.amazon.com/Dino-Luzzi-Energy-Drink-Count/dp/B09K7Y5DG7/ref=sr_1_1?sr=8-1"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="rounded-full bg-white p-6 cursor-pointer px-6 ">
-                <p className="text-black text-3xl font-bold">Buy Now!</p>
+              <div className="rounded-full bg-white p-4 cursor-pointer px-4 ">
+                <p className="text-black text-xl font-bold">Buy Now!</p>
               </div>
             </a>
           </div>
