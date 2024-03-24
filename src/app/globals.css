@@ -29,7 +29,12 @@
   }
 }
 
+section {
+  scroll-snap-align: start;
+}
+
 body {
+  scroll-snap-type: y mandatory;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

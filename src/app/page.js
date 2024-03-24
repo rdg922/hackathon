@@ -1,168 +1,157 @@
 "use client";
-// import Image from "next/image";
-import { useState } from "react";
-import TiltContainer from "@/components/tiltContainer";
-import Cube from "@/components/cube";
-import Section from "../section.jsx";
-import { Canvas } from '@react-three/fiber';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import { motion } from "framer-motion";
 import { Environment, OrbitControls } from "@react-three/drei";
-import { Suspense } from 'react';
-import { createRoot } from "react-dom/client";
+import { Suspense } from "react";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
 
-import CanModel from '../canModel/index.jsx';
+import Link from "next/link";
+
+import CanModel from "../canModel/index.jsx";
+
+import HeroSection from "@/sections/heroSection";
+import CanSection from "@/sections/canSection";
+import CarSection from "@/sections/carSection";
+
+const sections = [HeroSection, CanSection, CarSection];
+
+
+
 
 export default function Home() {
-  return (
-    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
-      <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
-        <h2 className="text-white text-3xl">Section 1</h2>
-      </section>
-      <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
-      <motion.div
-            className="w-1/2 flex h-full justify-center items-center bg-gray-800"
-          >
-            <Canvas className="w-full h-full">
-              <ambientLight intensity={0.1} />
-              <Suspense fallback={null}>
-                <CanModel />
-              </Suspense>
-              <Environment preset="sunset" />
-            </Canvas>
-          </motion.div>
-      <div className="w-1/2 h-full flex justify-center items-center bg-gray-800">
 
-      </div>
-      </section>
-      <section className="snap-start h-screen flex items-center justify-center bg-red-500">
-      <motion.div
-            className="w-full flex h-full justify-center items-center bg-gray-800"
-          >
-            <Canvas className="w-full h-full">
-<Physics
-        broadphase="SAP"
-        gravity={[0, -2.6, 0]}
-      >
-        <Scene />
-      </Physics>
-            </Canvas>
-          </motion.div>
-      </section>
-      {/* Add more sections as needed */}
-    </div>
-  );
+  const [currentSection, setCurrentSection] = useState(0);
+  const sectionRefs = useRef(sections.map(() => React.createRef()));
+
+
+
+  // const scrollToSection = (index) => {
+  //   window.scrollTo({
+  //     top: sectionRefs.current[index].current.offsetTop,
+  //     behavior: 'smooth',
+  //   });
+  // };
+  // const handleWheel = (e) => {
+  //   console.log("listening")
+  //   e.preventDefault(); // Prevent default scroll behavior
+    
+  //   if (e.deltaY > 0) { // Scrolling down
+  //     if (currentSection < sections.length - 1) {
+  //       setCurrentSection((prevSection) => {
+  //         scrollToSection(prevSection + 1);
+  //         return prevSection + 1;
+  //       });
+  //     }
+  //   } else if (e.deltaY < 0) { // Scrolling up
+  //     if (currentSection > 0) {
+  //       setCurrentSection((prevSection) => {
+  //         scrollToSection(prevSection - 1);
+  //         return prevSection - 1;
+  //       });
+  //     }
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener('wheel', handleWheel, { passive: false });
+  
+  //   return () => {
+  //     window.removeEventListener('wheel', handleWheel);
+  //   };
+  // }, [currentSection]);
+  const handleScroll = (e) => {
+    e.preventDefault();
+
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*\#/, '');
+    const elem = document.getElement(targetId);
+    elem?.scrollIntoView({
+      behavior: 'smooth'
+    });
+
+  }
+
+  const handleWheel = (e) => {
+    e.preventDefault(); // Prevent default scroll behavior
+    
+    if (e.deltaY > 0) { // Scrolling down
+      if (currentSection < 1) {
+        setCurrentSection((prevSection) => {
+          handleScroll(prevSection + 1);
+          return prevSection + 1;
+        })
+      }
+    } else if (e.deltaY < 0) { // Scrolling up
+      if (currentSection > 0) {
+        setCurrentSection((prevSection) => {
+          handleScroll(prevSection - 1);
+          return prevSection - 1;
+        });
+      }
+    }
+  };
+
+
+  return (
+    <motion.div className="snap-y scroll-smooth snap-mandatory h-screen overflow-scroll md:no-scrollbar">
+
+
+    <motion.section
+        id="section-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.9] }}
+        className="snap-always h-screen w-full flex items-center justify-center bg-[#0C0C0E]" 
+    >
+      <HeroSection />
+    </motion.section>
+
+    <motion.section 
+        id="section-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.9] }}
+        className="snap-always h-screen w-full flex items-center justify-center bg-[#0C0C0E]" >
+          <CanSection />
+      </motion.section>
+
+    <motion.section 
+        id="section-2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.9] }}
+        className="snap-always h-screen w-full flex items-center justify-center bg-[#0C0C0E]" >
+          <CarSection />
+      </motion.section>
+    
+    </motion.div>
+  )
 }
 
-// export default function Home() {
-//   return (
-//     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-//       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-//         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-//           Get started by editing&nbsp;
-//           <code className="font-mono font-bold">src/app/page.js</code>
-//         </p>
-//         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-//           <a
-//             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-//             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             By{" "}
-//             <Image
-//               src="/vercel.svg"
-//               alt="Vercel Logo"
-//               className="dark:invert"
-//               width={100}
-//               height={24}
-//               priority
-//             />
-//           </a>
-//         </div>
-//       </div>
-
-//       <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-//         <Image
-//           className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-//           src="/next.svg"
-//           alt="Next.js Logo"
-//           width={180}
-//           height={37}
-//           priority
-//         />
-//       </div>
-
-//       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-//         <a
-//           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           <h2 className={`mb-3 text-2xl font-semibold`}>
-//             Docs{" "}
-//             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-//               -&gt;
-//             </span>
-//           </h2>
-//           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-//             Find in-depth information about Next.js features and API.
-//           </p>
-//         </a>
-
-//         <a
-//           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           <h2 className={`mb-3 text-2xl font-semibold`}>
-//             Learn{" "}
-//             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-//               -&gt;
-//             </span>
-//           </h2>
-//           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-//             Learn about Next.js in an interactive course with&nbsp;quizzes!
-//           </p>
-//         </a>
-
-//         <a
-//           href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           <h2 className={`mb-3 text-2xl font-semibold`}>
-//             Templates{" "}
-//             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-//               -&gt;
-//             </span>
-//           </h2>
-//           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-//             Explore starter templates for Next.js.
-//           </p>
-//         </a>
-
-//         <a
-//           href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-//           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           <h2 className={`mb-3 text-2xl font-semibold`}>
-//             Deploy{" "}
-//             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-//               -&gt;
-//             </span>
-//           </h2>
-//           <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-//             Instantly deploy your Next.js site to a shareable URL with Vercel.
-//           </p>
-//         </a>
-//       </div>
-//     </main>
-//   );
-// }
+  // return (
+  //   <motion.div className="h-screen overflow-scroll md:no-scrollbar">
+  //     <motion.section 
+  //       initial={{ opacity: 0 }}
+  //       animate={{ opacity: 1 }}
+  //       exit={{ opacity: 0 }}
+  //       transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.9] }}
+  //       className="h-screen flex items-center justify-center bg-[#0C0C0E]">
+  //     </motion.section>
+      // <motion.section 
+      //   initial={{ opacity: 0 }}
+      //   animate={{ opacity: 1 }}
+      //   exit={{ opacity: 0 }}
+      //   transition={{ duration: 1, ease: [0.6, 0.05, 0.01, 0.9] }}
+      //   className="h-screen w-full flex items-center justify-center bg-[#0C0C0E]">
+      //   <CanSection />
+      // </motion.section>
+  //     <motion.section className="h-screen flex items-center justify-center">
+  //       <CarSection />
+  //     </motion.section>
+  //   </motion.div>
+  // );
