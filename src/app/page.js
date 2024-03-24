@@ -34,36 +34,49 @@ export default function Home() {
               <Environment preset="sunset" />
             </Canvas>
           </motion.div>
-      <div className="w-1/2 h-full flex justify-center  items-center bg-gray-900" style={{gap: 20, flexDirection: 'column', paddingLeft: '2rem', paddingRight: '2rem' }}>
+      <div className="w-1/2 h-full justify-center  items-left bg-gray-900 px-2 flex gap-5 " style={{ flexDirection: 'column',}}>
           <h2 className="text-white font-bold text-5xl">Dino Luzzi Energy Drink</h2>
           <h3 className="text-white text-3xl">The best energy drink in the world</h3>
-          <div style={{flexDirection: "column"}}>
-            <motion.div
-              whileHover={{ scale: 1.2, rotate: 0 }}
-              whileTap={{
-                scale: 0.8,
-                borderRadius: "100%"
-              }}
-              style={{background: "white", borderRadius: 30}}
-            
-            >
-              <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
-              <div className="rounded-full bg-white p-4 cursor-pointer" style={{paddingLeft: 25, paddingRight: 25, }}> 
-                <p className="text-black font-bold">Buy Now!</p>
+          <div style={{gap: 20, flexDirection: 'row', display: "flex"}}>
+            <div style={{display: "flex", flexDirection: "column", gap: 15,}}>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 0 }}
+                
+                style={{borderRadius: 20, padding: 9}}
+                className= "bg-gray-700"
+              >
+                <Zap color="#A48BFF" size={70} strokeWidth={1}/>
+              </motion.div>
+              <div classname="items-center flex justify-center" style={ {maxWidth: 85,}}>
+                <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
               </div>
-            </a>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.2, rotate: 0 }}
-              whileTap={{
-                scale: 0.8,
-                borderRadius: "100%"
-              }}
-              style={{borderRadius: 30}}
-              className= "bg-gray-700"
-            >
-              <Zap color="white" size={80} strokeWidth={1}/>
-            </motion.div>
+            </div>
+            <div style={{display: "flex", flexDirection: "column", gap: 15,}}>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 0 }}
+                
+                style={{borderRadius: 20, padding: 9}}
+                className= "bg-gray-700"
+              >
+                <Zap color="#A48BFF" size={70} strokeWidth={1}/>
+              </motion.div>
+              <div classname="items-center flex justify-center" style={ {maxWidth: 85,}}>
+                <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
+              </div>
+            </div>
+            <div style={{display: "flex", flexDirection: "column", gap: 15,}}>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 0 }}
+                
+                style={{borderRadius: 20, padding: 9}}
+                className= "bg-gray-700"
+              >
+                <Zap color="#A48BFF" size={70} strokeWidth={1}/>
+              </motion.div>
+              <div classname="items-center flex justify-center" style={ {maxWidth: 85,}}>
+                <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
+              </div>
+            </div>
           </div>
           <motion.div
             whileHover={{ scale: 1.2, rotate: 0 }}
@@ -71,11 +84,11 @@ export default function Home() {
               scale: 0.8,
               borderRadius: "100%"
             }}
-            style={{background: "white", borderRadius: 30}}
+            style={{background: "white", borderRadius: 30, width: "fit-content"}}
           
           >
             <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
-            <div className="rounded-full bg-white p-4 cursor-pointer" style={{paddingLeft: 25, paddingRight: 25, }}> 
+            <div className="rounded-full bg-white p-4 cursor-pointer px-25"> 
               <p className="text-black font-bold">Buy Now!</p>
             </div>
           </a>
@@ -101,6 +114,10 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
 
 // export default function Home() {
 //   return (
