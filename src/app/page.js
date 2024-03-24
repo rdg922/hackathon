@@ -7,9 +7,11 @@ import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
-import { Zap, Hexagon, Slash, ArrowDownCircle, ArrowDown } from "react-feather";
+import { Zap, Hexagon, Slash, ArrowDown, ArrowDownCircle } from "react-feather";
 
 import CanModel from "../canModel/index.jsx";
+
+import ResponsiveIcon from "@/ResponsiveIcon";
 
 const CanvasComponent = ({ setToJump, toJump, isVisible }) => {
   const canvasRef = useRef();
@@ -137,9 +139,9 @@ export default function Home() {
       </section>
       <section
         ref={nextSectionRef}
-        className="snap-start h-screen w-full flex items-center justify-center bg-green-0"
+        className="snap-start h-screen w-full flex items-center justify-center bg-green-500"
       >
-        <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-0">
+        <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
           <Canvas className="w-full h-full">
             <ambientLight intensity={0.1} />
             <Suspense fallback={null}>
@@ -148,107 +150,68 @@ export default function Home() {
             <Environment preset="sunset" />
           </Canvas>
         </motion.div>
-        <div
-          className="w-1/2 h-full justify-center  items-left bg-gray-0 px-2 flex gap-5 "
-          style={{ flexDirection: "column" }}
-        >
-          <h2 className="text-white font-bold text-5xl">
+        <div className="w-1/2 h-full flex flex-col justify-center items-start bg-gray-900 px-2 gap-5">
+          <h2 className="text-white font-bold text-4xl md:text-5xl lg:text-7xl">
             Dino Luzzi Energy Drink
           </h2>
-          <h3 className="text-white text-3xl">Find your power</h3>
-          <div style={{ gap: 20, flexDirection: "row", display: "flex" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
-              <motion.div
-                //whileHover={{ scale: 1.1, rotate: 0 }}
-                style={{ borderRadius: 20, padding: 15 }}
-                className="bg-gray-700"
-              >
-                <Zap color="#A48BFF" size={60} strokeWidth={1.5} />
-              </motion.div>
-              <div
-                className="items-center flex justify-center"
-                style={{ maxWidth: 85 }}
-              >
+          <h3 className="text-gray-400 text-3xl md:text-3xl lg:text-4xl">Find your Power</h3>
+          <div className="flex flex-row gap-5">
+            <div className="flex flex-col gap-4">
+              <div className="bg-gray-700 rounded-lg p-4">
+              <ResponsiveIcon Icon={Zap} />
+
+              </div>
+
+              <div className="flex items-center justify-center max-w-[85px]">
                 <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
               </div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
-              <motion.div
-                //whileHover={{ scale: 1.1, rotate: 0 }}
-                style={{ borderRadius: 20, padding: 15 }}
-                className="bg-gray-700"
-              >
-                <Hexagon color="#A48BFF" size={60} strokeWidth={1.5} />
-              </motion.div>
-              <div
-                className="items-center flex justify-center"
-                style={{ maxWidth: 85 }}
-              >
+            <div className="flex flex-col gap-4">
+              <div className="motion-div bg-gray-700 rounded-lg p-4">
+              <ResponsiveIcon Icon={Hexagon} />
+              </div>
+              <div className="flex items-center justify-center max-w-[85px]">
                 <h3 className="text-slate-300 text-sm">
                   Contains vitamins B2, B12, B13
                 </h3>
               </div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
-              <motion.div
-                //whileHover={{ scale: 1.1, rotate: 0 }}
-                style={{ borderRadius: 20, padding: 15 }}
-                className="bg-gray-700"
-              >
-                <Slash color="#A48BFF" size={60} strokeWidth={1.5} />
-              </motion.div>
-              <div
-                className="items-center flex justify-center"
-                style={{ maxWidth: 85 }}
-              >
+            <div className="flex flex-col gap-4">
+              <div className="motion-div bg-gray-700 rounded-lg p-4">
+              <ResponsiveIcon Icon={Slash}/>
+              </div>
+              <div className="flex items-center justify-center max-w-[85px]">
                 <h3 className="text-slate-300 text-sm">
-                  Made with zero fat or cholesteral
+                  Made with zero fat or cholesterol
                 </h3>
               </div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
-              <motion.div
-                //whileHover={{ scale: 1.1, rotate: 0 }}
-                style={{ borderRadius: 20, padding: 15 }}
-                className="bg-gray-700"
-              >
-                <ArrowDownCircle color="#A48BFF" size={60} strokeWidth={1.5} />
-              </motion.div>
-              <div
-                className="items-center flex justify-center"
-                style={{ maxWidth: 85 }}
-              >
+            <div className="flex flex-col gap-4">
+              <div className="motion-div bg-gray-700 rounded-lg p-4">
+              <ResponsiveIcon Icon={ArrowDownCircle}/>
+
+              </div>
+              <div className="flex items-center justify-center max-w-[85px]">
                 <h3 className="text-slate-300 text-sm">
                   Only 115 calories per can
                 </h3>
               </div>
             </div>
           </div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 0 }}
-            whileTap={{
-              scale: 0.8,
-              borderRadius: "100%",
-            }}
-            style={{
-              background: "white",
-              borderRadius: 30,
-              width: "fit-content",
-            }}
-          >
+          <div className="motion-div hover:scale-110 hover:rotate-0 tap:scale-80 tap:rounded-full bg-white rounded-full w-fit">
             <a
               href="https://www.amazon.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="rounded-full bg-white p-4 cursor-pointer px-25">
+              <div className="rounded-full bg-white p-4 cursor-pointer px-6">
                 <p className="text-black font-bold">Buy Now!</p>
               </div>
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
       <section
