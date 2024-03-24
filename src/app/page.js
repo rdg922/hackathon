@@ -11,18 +11,20 @@ import { Suspense } from 'react';
 import { createRoot } from "react-dom/client";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
+import { Zap } from 'react-feather';
+
 
 import CanModel from '../canModel/index.jsx';
 
 export default function Home() {
   return (
-    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
+    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar" >
       <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
         <h2 className="text-white text-3xl">Section 1</h2>
       </section>
       <section className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
       <motion.div
-            className="w-1/2 flex h-full justify-center items-center bg-gray-800"
+            className="w-1/2 flex h-full justify-center items-center bg-gray-900"
           >
             <Canvas className="w-full h-full">
               <ambientLight intensity={0.1} />
@@ -32,8 +34,53 @@ export default function Home() {
               <Environment preset="sunset" />
             </Canvas>
           </motion.div>
-      <div className="w-1/2 h-full flex justify-center items-center bg-gray-800">
-
+      <div className="w-1/2 h-full flex justify-center  items-center bg-gray-900" style={{gap: 20, flexDirection: 'column', paddingLeft: '2rem', paddingRight: '2rem' }}>
+          <h2 className="text-white font-bold text-5xl">Dino Luzzi Energy Drink</h2>
+          <h3 className="text-white text-3xl">The best energy drink in the world</h3>
+          <div style={{flexDirection: "column"}}>
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 0 }}
+              whileTap={{
+                scale: 0.8,
+                borderRadius: "100%"
+              }}
+              style={{background: "white", borderRadius: 30}}
+            
+            >
+              <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+              <div className="rounded-full bg-white p-4 cursor-pointer" style={{paddingLeft: 25, paddingRight: 25, }}> 
+                <p className="text-black font-bold">Buy Now!</p>
+              </div>
+            </a>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 0 }}
+              whileTap={{
+                scale: 0.8,
+                borderRadius: "100%"
+              }}
+              style={{borderRadius: 30}}
+              className= "bg-gray-700"
+            >
+              <Zap color="white" size={80} strokeWidth={1}/>
+            </motion.div>
+          </div>
+          <motion.div
+            whileHover={{ scale: 1.2, rotate: 0 }}
+            whileTap={{
+              scale: 0.8,
+              borderRadius: "100%"
+            }}
+            style={{background: "white", borderRadius: 30}}
+          
+          >
+            <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+            <div className="rounded-full bg-white p-4 cursor-pointer" style={{paddingLeft: 25, paddingRight: 25, }}> 
+              <p className="text-black font-bold">Buy Now!</p>
+            </div>
+          </a>
+          </motion.div>
+          
       </div>
       </section>
       <section className="snap-start h-screen flex items-center justify-center bg-red-500">

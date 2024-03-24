@@ -18,7 +18,7 @@ export const useControls = (vehicleApi, chassisApi) => {
       clearTimeout(scrollEndTimer);
 
       // Set movement based on scroll direction
-      setControls({ forward: e.deltaY < 0, backward: e.deltaY > 0 });
+      setControls({ forward: e.deltaY > 0, backward: e.deltaY < 0 });
 
       // Set a new timer to stop the car after 100ms of inactivity
       scrollEndTimer = setTimeout(() => {
@@ -40,10 +40,10 @@ export const useControls = (vehicleApi, chassisApi) => {
   useEffect(() => {
     if(!vehicleApi || !chassisApi) return;
 
-    if (controls.forward) {
+    if (controls.forward || controls.w) {
       vehicleApi.applyEngineForce(250, 2);
       vehicleApi.applyEngineForce(250, 3);
-    } else if (controls.backward) {
+    } else if (controls.backward || controls.s) {
       vehicleApi.applyEngineForce(-150, 2);
       vehicleApi.applyEngineForce(-150, 3);
     } else {
