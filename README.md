@@ -1,12 +1,11 @@
-
 # Dino Luzzi Energy Website Redesign
 
-This project is a submission for the Dino Luzzi Energy Challenge as part of the OSCHack's 24-hour hackathon. The challenge was to infuse the [Dino Luzzi Energy](https://dinoluzzi.com/) website with fresh functionality, UI/UX design, and style in just 24 hours. The goal was to improve the company's functionality and make it easier for people to purchase the product.
+This project is a submission for the Dino Luzzi Energy Challenge as part of the OSCHack's 24-hour hackathon. The challenge was to infuse the [Dino Luzzi Energy](https://dinoluzzi.com/) website with new functionality, UI/UX design, and style to make it more engaging and easier for people to purchase the product.
 
 ## Features
 
-- **3D Car Model**: To represent the Dino Luzzi Racing team, we've included a 3D car model in the website. This adds an interactive element to the site and pays homage to the company's racing roots.
-- **Improved UI/UX**: We've redesigned the website to improve the user experience and make it easier for customers to navigate and purchase products.
+- **Overhauled UI/UX**: We've redesigned the website with a flat, modern look to make it easier for people to understand the main selling points of the product.
+- **3D Car Model**: As a nod to the Dino Luzzi Racing team, we've included the Dino Luzzi racecar in the the website. This adds an interactive element to the site to engage with customers and present information in a novel and interesting way.
 
 ## Setup Instructions
 
