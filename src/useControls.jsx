@@ -73,12 +73,11 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
     
 
 
-    if (controls.r || resetSignal) {
+    if (controls.r || resetSignal || !isVisible) {
       chassisApi.position.set(-1.5, 0.5, 3);
       chassisApi.velocity.set(0, 0, 0);
       chassisApi.angularVelocity.set(0, 0, 0);
       chassisApi.rotation.set(0, 0, 0);
-      console.log(vehicleApi)
     }
   }, [controls, vehicleApi, chassisApi]);
 
