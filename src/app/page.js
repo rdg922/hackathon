@@ -182,7 +182,7 @@ export default function Home() {
           <h2 className="text-white font-bold text-4xl md:text-5xl lg:text-7xl z-20">
             Dino Luzzi Energy Drink
           </h2>
-          <h3 className="text-gray-400 text-3xl md:text-3xl lg:text-4xl z-20">
+          <h3 className="w-full text-gray-400 text-3xl md:text-3xl lg:text-6xl z-20">
             Find your Power
           </h3>
           <div className="flex flex-row gap-5 z-20">
@@ -191,10 +191,8 @@ export default function Home() {
                 <ResponsiveIcon Icon={Zap} />
               </div>
 
-              <div className="flex items-center justify-center max-w-[85px] z-20">
-                <h3 className="text-slate-300 text-sm z-20">
-                  Long lasting energy
-                </h3>
+              <div className="flex items-center justify-center z-20">
+                <h3 className="text-slate-300 text-md z-20">Long lasting energy</h3>
               </div>
             </div>
 
@@ -202,7 +200,7 @@ export default function Home() {
               <div className="motion-div bg-gray-700 rounded-2xl p-4">
                 <ResponsiveIcon Icon={Hexagon} />
               </div>
-              <div className="flex items-center justify-center max-w-[85px]">
+              <div className="flex items-center justify-center ">
                 <h3 className="text-slate-300 text-sm">
                   Contains vitamins B2, B12, B13
                 </h3>
@@ -213,7 +211,7 @@ export default function Home() {
               <div className="motion-div bg-gray-700 rounded-2xl p-4">
                 <ResponsiveIcon Icon={Slash} />
               </div>
-              <div className="flex items-center justify-center max-w-[85px]">
+              <div className="flex items-center justify-center">
                 <h3 className="text-slate-300 text-sm">
                   Made with zero fat or cholesterol
                 </h3>
@@ -224,7 +222,7 @@ export default function Home() {
               <div className="motion-div bg-gray-700 rounded-2xl p-4">
                 <ResponsiveIcon Icon={ArrowDownCircle} />
               </div>
-              <div className="flex items-center justify-center max-w-[85px]">
+              <div className="flex items-center justify-center ">
                 <h3 className="text-slate-300 text-sm">
                   Only 115 calories per can
                 </h3>
@@ -233,7 +231,7 @@ export default function Home() {
           </div>
           <div className="motion-div hover:scale-110 hover:rotate-0 tap:scale-80 tap:rounded-full bg-white rounded-full w-fit">
             <a
-              href="https://www.amazon.com/dp/B09K7Y5DG7/ref=cm_sw_r_wa_api_glt_fabc_2XYCJFQW66HZ6QFF07QD"
+              href="https://www.amazon.com/Dino-Luzzi-Energy-Drink-Count/dp/B09K7Y5DG7/ref=sr_1_1?sr=8-1"
               target="_blank"
               rel="noopener noreferrer"
             >

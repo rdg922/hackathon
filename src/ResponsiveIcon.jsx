@@ -6,7 +6,7 @@ function getIconSize(width) {
   if (width < 768) return 24; // Tailwind's 'sm' breakpoint
   if (width >= 768 && width < 1024) return 64; // 'md' breakpoint
   if (width >= 1024) return 96; // 'lg' and up
-  return 24; // Default size
+  return 100; // Default size
 }
 
 const ResponsiveIcon = ({Icon}) => {
