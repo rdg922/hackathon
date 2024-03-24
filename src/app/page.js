@@ -1,22 +1,18 @@
 "use client";
-// import Image from "next/image";
-import { useState, useEffect, useRef, useCallback } from "react";
-import TiltContainer from "@/components/tiltContainer";
-import Cube from "@/components/cube";
-import Section from "../section.jsx";
-import { Canvas, useThree } from "@react-three/fiber";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Canvas } from "@react-three/fiber";
+import { motion, AnimatePresence } from "framer-motion";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { Scene } from "../Scene";
 import { Physics } from "@react-three/cannon";
+import { Zap, Hexagon, Slash, ArrowDownCircle } from "react-feather";
+
 
 import CanModel from "../canModel/index.jsx";
 
-import CanComponent from "@/CanComponent.jsx";
 
-import { Link, Element } from "react-scroll";
 
 const CanvasComponent = ({ setToJump, toJump }) => {
   const canvasRef = useRef();
@@ -70,8 +66,10 @@ const CanvasComponent = ({ setToJump, toJump }) => {
   );
 };
 
-export default function Home() {
+export default function Home() { 
+  const [isCanvasVisible, setCanvasVisible] = useState(false);
   const nextSectionRef = useRef(null);
+  const carSectionRef = useRef(null);
 
   const [toJump, setToJump] = useState(false);
 
@@ -87,24 +85,154 @@ export default function Home() {
     }, 500);
   }, [toJump]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setCanvasVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Adjust based on when you want to load/unload the Canvas
+    );
+
+    if (carSectionRef.current) {
+      observer.observe(carSectionRef.current);
+    }
+
+    return () => {
+      if (carSectionRef.current) {
+        observer.unobserve(carSectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="snap-mandatory snap-y h-screen overflow-scroll md:no-scrollbar">
-      <section className="h-screen flex items-center justify-center bg-blue-500">
+    <div className="snap-y snap-mandatory h-screen overflow-scroll md:no-scrollbar">
+      <section className="snap-start h-screen flex items-center justify-center bg-blue-500">
         <h2 className="text-white text-3xl">Section 1</h2>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.4 }}
+        >
+          <h1>World's</h1>
+        </motion.div>
       </section>
-      <section
-        ref={nextSectionRef}
-        id="nextSection"
-        className="snap-start h-screen w-full flex items-center justify-center bg-green-500"
-      >
-        test
+      <section ref={nextSectionRef} className="snap-start h-screen w-full flex items-center justify-center bg-green-500">
+        <motion.div className="w-1/2 flex h-full justify-center items-center bg-gray-900">
+          <Canvas className="w-full h-full">
+            <ambientLight intensity={0.1} />
+            <Suspense fallback={null}>
+              <CanModel />
+            </Suspense>
+            <Environment preset="sunset" />
+          </Canvas>
+        </motion.div>
+        <div
+          className="w-1/2 h-full justify-center  items-left bg-gray-900 px-2 flex gap-5 "
+          style={{ flexDirection: "column" }}
+        >
+          <h2 className="text-white font-bold text-5xl">
+            Dino Luzzi Energy Drink
+          </h2>
+          <h3 className="text-white text-3xl">Find your power</h3>
+          <div style={{ gap: 20, flexDirection: "row", display: "flex" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
+              <motion.div
+                //whileHover={{ scale: 1.1, rotate: 0 }}
+                style={{ borderRadius: 20, padding: 15 }}
+                className="bg-gray-700"
+              >
+                <Zap color="#A48BFF" size={60} strokeWidth={1.5} />
+              </motion.div>
+              <div
+                className="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
+                <h3 className="text-slate-300 text-sm">Long lasting energy</h3>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
+              <motion.div
+                //whileHover={{ scale: 1.1, rotate: 0 }}
+                style={{ borderRadius: 20, padding: 15 }}
+                className="bg-gray-700"
+              >
+                <Hexagon color="#A48BFF" size={60} strokeWidth={1.5} />
+              </motion.div>
+              <div
+                className="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
+                <h3 className="text-slate-300 text-sm">
+                  Contains vitamins B2, B12, B13
+                </h3>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
+              <motion.div
+                //whileHover={{ scale: 1.1, rotate: 0 }}
+                style={{ borderRadius: 20, padding: 15 }}
+                className="bg-gray-700"
+              >
+                <Slash color="#A48BFF" size={60} strokeWidth={1.5} />
+              </motion.div>
+              <div
+                className="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
+                <h3 className="text-slate-300 text-sm">
+                  Made with zero fat or cholesteral
+                </h3>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 15 }}>
+              <motion.div
+                //whileHover={{ scale: 1.1, rotate: 0 }}
+                style={{ borderRadius: 20, padding: 15 }}
+                className="bg-gray-700"
+              >
+                <ArrowDownCircle color="#A48BFF" size={60} strokeWidth={1.5} />
+              </motion.div>
+              <div
+                className="items-center flex justify-center"
+                style={{ maxWidth: 85 }}
+              >
+                <h3 className="text-slate-300 text-sm">
+                  Only 115 calories per can
+                </h3>
+              </div>
+            </div>
+          </div>
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 0 }}
+            whileTap={{
+              scale: 0.8,
+              borderRadius: "100%",
+            }}
+            style={{
+              background: "white",
+              borderRadius: 30,
+              width: "fit-content",
+            }}
+          >
+            <a
+              href="https://www.amazon.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="rounded-full bg-white p-4 cursor-pointer px-25">
+                <p className="text-black font-bold">Buy Now!</p>
+              </div>
+            </a>
+          </motion.div>
+        </div>
       </section>
-      <section
-        id="section1"
-        className="snap-center h-screen flex items-center justify-center bg-red-500"
-      >
+      <section ref={carSectionRef} className="snap-start h-screen flex items-center justify-center bg-red-500">
         <motion.div className="w-full flex h-full justify-center items-center bg-gray-800">
-          <CanvasComponent setToJump={setToJump} toJump={toJump} />
+          <CanvasComponent setToJump={setToJump} toJump={toJump} isVisible={isCanvasVisible}/>
         </motion.div>
       </section>
       {/* Add more sections as needed */}
