@@ -55,7 +55,7 @@ export function Ground() {
     <>
       <mesh
         ref={meshRef2}
-        position={[-1.5, 0.002, -1.325]}
+        position={[-1.5, 0.002, 0]}
         rotation-x={-Math.PI * 0.5}
         rotation-z={Math.PI * 1}
         scale={[0.21, 0.8, 1]}
@@ -66,7 +66,7 @@ export function Ground() {
 
       <mesh
         ref={meshRef2}
-        position={[-1.5, 0.25, -1.325]}
+        position={[-1.5, 0.2, 0]}
         rotation-x={-Math.PI * 0.5}
         rotation-z={Math.PI * 1}
         scale={[0.21, 0.8, 1]}
@@ -77,7 +77,7 @@ export function Ground() {
 
       <mesh
         ref={meshRef}
-        position={[-1.5, -0.01, -1.325]}
+        position={[-1.5, -0.01, 0]}
         rotation-x={-Math.PI * 0.5}
         rotation-z={0}
       >
@@ -104,7 +104,7 @@ export function Ground() {
           reflectorOffset={0.02} // Offsets the virtual camera that projects the reflection. Useful when the reflective
         ></MeshReflectorMaterial>
       </mesh>
-      <ColliderBox position={[-1.53, 0.0, -5.4]} scale={[2, 1, 0.3]} />
+      <ColliderBox position={[-1.53, 0.0, -4.075]} scale={[2, 1, 0.3]} />
     </>
   );
 }
