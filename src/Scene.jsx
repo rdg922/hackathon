@@ -8,11 +8,11 @@ import { Car } from "./Car";
 import { Ground } from "./Ground";
 import { Track } from "./Track";
 import {TextPlane} from "./TextPlane";
-export function Scene() {
+import { useThree } from "@react-three/fiber";
+
+export function Scene({goToNextSection, resetSignal}) {
   const [thirdPerson, setThirdPerson] = useState(false);
   const [cameraPosition, setCameraPosition] = useState([-6, 3.9, 6.21]);
-
-  
 
   return (
     <Suspense fallback={null}>
@@ -27,7 +27,7 @@ export function Scene() {
       {<Ground />}
 
       {/*<Track />*/}
-      <Car thirdPerson={thirdPerson} />
+      <Car thirdPerson={thirdPerson} goToNextSection={goToNextSection} resetSignal={resetSignal}/>
     </Suspense>
   );
 }
