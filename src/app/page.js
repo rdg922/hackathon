@@ -129,7 +129,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.8 }}
         >
-          <h2 className="text-white text-8xl">Experience the world's first</h2>
+          <h2 className="text-white text-5xl">Experience the world's first</h2>
         </motion.div>
         <motion.div
           className="z-10"
@@ -137,7 +137,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
         >
-          <h2 className="text-white text-8xl">designer energy drink</h2>
+          <h2 className="text-white text-5xl">designer energy drink</h2>
         </motion.div>
         <motion.div
           className="mt-auto mb-[16px] z-10"
@@ -146,7 +146,7 @@ export default function Home() {
           transition={{ delay: 2, duration: 0.8 }}
           style={{ justifySelf: "left" }}
         >
-          <ArrowDown color="white" size={120} strokeWidth={1.5} />
+          <ArrowDown color="white" size={40} strokeWidth={1.5} />
         </motion.div>
       </section>
       <section
@@ -192,7 +192,9 @@ export default function Home() {
               </div>
 
               <div className="flex items-center justify-center z-20">
-                <h3 className="text-slate-300 text-lg z-20 max-w-[128px]">Long lasting energy</h3>
+                <h3 className="text-slate-300 text-lg z-20 max-w-[128px]">
+                  Long lasting energy
+                </h3>
               </div>
             </div>
 
