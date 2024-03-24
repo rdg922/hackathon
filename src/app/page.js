@@ -47,23 +47,23 @@ const CanvasComponent = ({ setToJump, toJump, isVisible }) => {
   }, [addLockListeners, removeLockListeners]);
 
   return (
-      <Suspense fallback={null}>
-    <Canvas
-      className="w-full h-full"
-      ref={canvasRef}
-      onPointerOver={addLockListeners}
-      onPointerOut={removeLockListeners}
-    >
-      <Physics broadphase="SAP" gravity={[0, -2.6, 0]}>
-        <Scene
-          resetSignal={toJump}
-          goToNextSection={() => {
-            if (!toJump) setToJump(true);
-          }}
-          isVisible={isVisible}
-        />
-      </Physics>
-    </Canvas>
+    <Suspense fallback={null}>
+      <Canvas
+        className="w-full h-full"
+        ref={canvasRef}
+        onPointerOver={addLockListeners}
+        onPointerOut={removeLockListeners}
+      >
+        <Physics broadphase="SAP" gravity={[0, -2.6, 0]}>
+          <Scene
+            resetSignal={toJump}
+            goToNextSection={() => {
+              if (!toJump) setToJump(true);
+            }}
+            isVisible={isVisible}
+          />
+        </Physics>
+      </Canvas>
     </Suspense>
   );
 };
@@ -75,17 +75,17 @@ export default function Home() {
 
   const [toJump, setToJump] = useState(false);
 
-    useEffect(() => {
+  useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'ArrowDown') {
-        nextSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      if (event.key === "ArrowDown") {
+        nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     // Clean up the event listener when the component is unmounted
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   useEffect(() => {
@@ -130,7 +130,7 @@ export default function Home() {
     <div className="snap-y snap-mandatory snap-start h-screen overflow-scroll md:no-scrollbar relative">
       <section className="snap-start h-screen flex flex-col flex-row items-center justify-center gap-5 bg-blue-0">
         <div
-          className="absolute w-[800px] h-[800px] bg-red-500 rounded-full heavy-blur"
+          className="absolute w-[600px] h-[600px] bg-red-500 rounded-full heavy-blur"
           style={{
             top: "50%",
             left: "50%",
@@ -161,7 +161,7 @@ export default function Home() {
           transition={{ delay: 2, duration: 0.8 }}
           style={{ justifySelf: "left" }}
         >
-          <ArrowDown color="white" size={40} strokeWidth={1.5} />
+          <ArrowDown color="white" size={60} strokeWidth={1.5} />
         </motion.div>
       </section>
       <section
@@ -170,20 +170,20 @@ export default function Home() {
       >
         <motion.div className="w-1/2 flex h-full justify-center items-center relative">
           <div
-            className="absolute w-[500px] h-[500px] bg-white rounded-full small-blur"
+            className="absolute w-[300px] h-[300px] bg-white rounded-full small-blur"
             style={{
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
             }}
           ></div>
-            <Suspense fallback={null}>
-          <Canvas className="w-full h-full z-10">
-            <ambientLight intensity={0.1} />
+          <Suspense fallback={null}>
+            <Canvas className="w-full h-full z-10">
+              <ambientLight intensity={0.1} />
               <CanModel />
-            <Environment preset="sunset" />
-          </Canvas>
-            </Suspense>
+              <Environment preset="sunset" />
+            </Canvas>
+          </Suspense>
         </motion.div>
         <div className="w-1/2 h-full flex flex-col justify-center items-start px-2 gap-5 relative z-10">
           <div
@@ -194,10 +194,10 @@ export default function Home() {
               transform: "translate(-50%, -50%)",
             }}
           ></div>
-          <h2 className="text-white font-bold text-4xl md:text-5xl lg:text-7xl z-20 py-2">
+          <h2 className="text-white font-bold text-3xl md:text-5xl lg:text-5xl z-20 py-2">
             Dino Luzzi Energy Drink
           </h2>
-          <h3 className="w-full text-gray-400 text-3xl md:text-3xl lg:text-6xl z-20 py-2">
+          <h3 className="w-full text-gray-400 text-2xl md:text-3xl lg:text-3xl z-20 py-2">
             Find your Power
           </h3>
           <div className="flex flex-row gap-10 z-20 py-2">
