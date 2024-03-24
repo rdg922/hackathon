@@ -56,7 +56,7 @@ export function Car({ thirdPerson, goToNextSection, resetSignal, isVisible }) {
     // change the numbers to move the camera position
     let cameraPosition = position
       .clone()
-      .add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 2.8, -3.5)));
+      .add(wDir.clone().multiplyScalar(1).add(new Vector3(0, 2.0, -2.9)));
 
     wDir.add(new Vector3(0, 0.2, 0));
     state.camera.position.copy(cameraPosition);

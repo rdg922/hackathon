@@ -76,8 +76,9 @@ export const useControls = (vehicleApi, chassisApi, resetSignal, isVisible) => {
       chassisApi.position.set(-1.64, 0.5, 3);
       chassisApi.velocity.set(0, 0, 0);
       chassisApi.angularVelocity.set(0, 0, 0);
-      chassisApi.rotation.set(0, 0, 0);
     }
+    chassisApi.rotation.set(0, 0, 0);
+    // chassisApi.position.set(-1.64, 0.5, 3);
   }, [controls, vehicleApi, chassisApi]);
 
   return controls;
