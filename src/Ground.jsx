@@ -16,7 +16,7 @@ export function Ground() {
 
   const gridMap = useLoader(
     TextureLoader,
-    "/textures/grid.png"
+    "/textures/grid_test.png"
   );
 
   

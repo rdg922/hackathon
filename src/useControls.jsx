@@ -11,24 +11,39 @@ export const useControls = (vehicleApi, chassisApi) => {
     const keyUpPressHandler = (e) => {
       setControls((controls) => ({ ...controls, [e.key.toLowerCase()]: false }));
     }
+    let scrollEndTimer = null;
+
+    const handleScroll = (e) => {
+      // Cancel the previous timer if the user is still scrolling
+      clearTimeout(scrollEndTimer);
+
+      // Set movement based on scroll direction
+      setControls({ forward: e.deltaY > 0, backward: e.deltaY < 0 });
+
+      // Set a new timer to stop the car after 100ms of inactivity
+      scrollEndTimer = setTimeout(() => {
+        setControls({ forward: false, backward: false });
+      }, 100); // Adjust delay as needed
+    }
 
     
-  
+    window.addEventListener("wheel", handleScroll, { passive: true });
     window.addEventListener("keydown", keyDownPressHandler);
     window.addEventListener("keyup", keyUpPressHandler);
     return () => {
       window.removeEventListener("keydown", keyDownPressHandler);
       window.removeEventListener("keyup", keyUpPressHandler);
+      window.removeEventListener("wheel", handleScroll);
     }
   }, []);
 
   useEffect(() => {
     if(!vehicleApi || !chassisApi) return;
 
-    if (controls.w) {
+    if (controls.forward || controls.w) {
       vehicleApi.applyEngineForce(250, 2);
       vehicleApi.applyEngineForce(250, 3);
-    } else if (controls.s) {
+    } else if (controls.backward || controls.s) {
       vehicleApi.applyEngineForce(-150, 2);
       vehicleApi.applyEngineForce(-150, 3);
     } else {
@@ -36,26 +51,8 @@ export const useControls = (vehicleApi, chassisApi) => {
       vehicleApi.applyEngineForce(0, 3);
     }
 
-    if (controls.a) {
-      vehicleApi.setSteeringValue(0.35, 2);
-      vehicleApi.setSteeringValue(0.35, 3);
-      vehicleApi.setSteeringValue(-0.1, 0);
-      vehicleApi.setSteeringValue(-0.1, 1);
-    } else if (controls.d) {
-      vehicleApi.setSteeringValue(-0.35, 2);
-      vehicleApi.setSteeringValue(-0.35, 3);
-      vehicleApi.setSteeringValue(0.1, 0);
-      vehicleApi.setSteeringValue(0.1, 1);
-    } else {
-      for(let i = 0; i < 4; i++) {
-        vehicleApi.setSteeringValue(0, i);
-      }
-    }
+    
 
-    if (controls.arrowdown)  chassisApi.applyLocalImpulse([0, -5, 0], [0, 0, +1]);
-    if (controls.arrowup)    chassisApi.applyLocalImpulse([0, -5, 0], [0, 0, -1]);
-    if (controls.arrowleft)  chassisApi.applyLocalImpulse([0, -5, 0], [-0.5, 0, 0]);
-    if (controls.arrowright) chassisApi.applyLocalImpulse([0, -5, 0], [+0.5, 0, 0]);
 
     if (controls.r) {
       chassisApi.position.set(-1.5, 0.5, 3);
