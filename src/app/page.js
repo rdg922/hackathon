@@ -75,22 +75,33 @@ export default function Home() {
   const [toJump, setToJump] = useState(false);
 
   useEffect(() => {
-    console.log("test");
-    if (toJump)
+    let timeoutId = null;
+
+    if (toJump && isCanvasVisible){
       if (nextSectionRef.current) {
         nextSectionRef.current.scrollIntoView({ behavior: "smooth" });
+        timeoutId = setTimeout(() => {
+          console.log("jumped!")
+          setToJump(false);
+        }, 600)
       }
-    // Assuming the scroll will take approximately 500ms to complete
-    setTimeout(() => {
-      setToJump(false); // Reset toJump to false after the scroll
-    }, 500);
-  }, [toJump]);
+    }
+    
+      if (timeoutId != null) {
+        return () => clearTimeout(timeoutId);
+      }
+  }, [toJump, isCanvasVisible]);
 
   useEffect(() => {
+
+
+
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         setCanvasVisible(entry.isIntersecting);
+
+
       },
       { threshold: 0.1 } // Adjust based on when you want to load/unload the Canvas
     );
